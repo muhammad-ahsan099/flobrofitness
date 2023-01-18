@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text as NativeText, TextStyle, StyleProp, TextProps as NativeProps } from 'react-native';
-import { Theme, useTheme } from '../theming';
+import { Theme, useTheme } from '../../theming';
 
 export function Text({
   style,

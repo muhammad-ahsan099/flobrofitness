@@ -16,15 +16,15 @@ const palette = {
 export const theme = {
   colors: {
     primary: '#184163',
-    lightPrimary: palette.uiColorsText,
+    lightPrimary: '#031e23',
     secondary: palette.brandColorsVoxoMobileRed,
     action: palette.brandColorsVoxoMobileRed,
     danger: palette.uiColorsUiDanger,
     success: palette.uiColorsUiSuccess,
     white: '#ffffff',
     grey: 'grey',
-    lightGrey: '#5C696F',
-    borderColor: '#C0C4C5',
+    lightGrey: '#555',
+    borderColor: '#d4d4d4',
     dropDownText: '#536068',
     title: '#2E3F48',
     switchOffColor: '#788287',

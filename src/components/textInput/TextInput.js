@@ -7,17 +7,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { useTheme } from '../theming';
+import { useTheme } from '../../theming';
 
 /** TODO: This component is currently unused. Please keep it until there will decide about search for reassign and tags */
 
-interface Props extends TextInputProps {
-  containerStyle?: StyleProp<ViewStyle>;
-  before?: ReactNode;
-  after?: ReactNode;
-}
 
-export function TextInput({ before, after, containerStyle, style, ...forwardProps }: Props) {
+export function TextInput({ before, after, containerStyle, style, ...forwardProps }) {
   const { colors } = useTheme();
   return (
     <View style={[styles.container, { borderColor: colors.secondary }, containerStyle]}>
