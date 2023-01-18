@@ -58,7 +58,7 @@ const LogIn = () => {
               <View style={styles.forgotPass}>
                 <Text>Remember</Text>
                 <Touchable>
-                  <Text size={15} color="lightGrey">Forgot Password</Text>
+                  <Text size={15} color="lightGrey">Forgot Password?</Text>
                 </Touchable>
               </View>
             </View>
