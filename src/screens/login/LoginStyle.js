@@ -43,7 +43,8 @@ export const styles = StyleSheet.create({
     },
     forgotPass: {
         flexDirection: 'row',
-        // justifyContent: 'space-between',
+        justifyContent: 'space-between',
+        width: '100%',
         // backgroundColor: 'pink',
         marginBottom: 30,
     },

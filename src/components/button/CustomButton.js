@@ -10,7 +10,7 @@ const CustomButton = ({
     return (
         <Button
             title={title ? title : "Press me"}
-            onPress={press ? press : () => Alert.alert('Simple Button pressed')}
+            // onPress={press ? press : () => Alert.alert('Simple Button pressed')}
             color={btnColor ? btnColor : COLORS.white}
         />
     )
