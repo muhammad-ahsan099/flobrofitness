@@ -1,12 +1,18 @@
 import React from 'react'
-import Setup from './src/screens/Profile/Setup/Setup'
+import Setup from './src/screens/Setup/Setup'
 import { SafeAreaView } from 'react-native'
+import { theme, ThemeProvider } from './src/theming';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import LogIn from './src/screens/login/LogIn';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Setup />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        {/* <Setup /> */}
+        <LogIn />
+      </ThemeProvider>
+    </SafeAreaProvider>
   )
 }
 
