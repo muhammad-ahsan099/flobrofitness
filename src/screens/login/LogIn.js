@@ -1,4 +1,4 @@
-import { Image, ImageBackground, View } from 'react-native'
+import { Image, ImageBackground, StatusBar, View } from 'react-native'
 import React from 'react'
 import { Screen } from '../../components/screen/Screen'
 import { Text } from '../../components/text/Text'
@@ -9,11 +9,21 @@ import { LOGIN_BG, LOGO } from '../../constant/Icons'
 import { theme } from '../../theming'
 import CustomCheckbox from '../../components/checkbox/CustomCheckbox'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { UseLogin } from './UseLogin'
 
 
-const LogIn = () => {
+const LogIn = ({ navigation }) => {
+  const [{
+    values,
+    handleChange
+  }] = UseLogin()
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle={'light-content'}
+      />
       <ImageBackground source={LOGIN_BG} resizeMode="cover" style={styles.image}>
         <Screen
           scroll
@@ -29,9 +39,8 @@ const LogIn = () => {
                 placeholderTextColor={theme.colors.lightGrey}
                 autoCapitalize="none"
                 autoCorrect={false}
-                // value={values.email}
-                // onChangeText={handleChange('email')}
-                // onBlur={handleBlur('email')}
+                value={values.email}
+                onChangeText={handleChange('email')}
                 containerStyle={styles.textInput}
                 style={[
                   styles.textInputText,
@@ -49,9 +58,8 @@ const LogIn = () => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 secureTextEntry={true}
-                // value={values.password}
-                // onChangeText={handleChange('password')}
-                // onBlur={handleBlur('password')}
+                value={values.password}
+                onChangeText={handleChange('password')}
                 containerStyle={styles.textInput}
                 style={[
                   styles.textInputText,
@@ -66,13 +74,13 @@ const LogIn = () => {
                 }
               />
               <View style={styles.forgotPass}>
-                <CustomCheckbox label={'Remember'} />
+                <CustomCheckbox label={'Remember'}/>
                 <Touchable>
                   <Text size={15} weight={'medium'} color="lightGrey">Forgot Password?</Text>
                 </Touchable>
               </View>
             </View>
-            <Touchable style={styles.loginBtn}>
+            <Touchable style={styles.loginBtn} onPress={() => navigation.navigate('signup')}>
               <Text style={styles.loginBtnText}>Login</Text>
             </Touchable>
 

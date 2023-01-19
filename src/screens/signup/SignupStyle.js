@@ -1,10 +1,13 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { theme } from "../../theming";
+const windowHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
     screen: {
-        flex: 1,
         justifyContent: 'center',
+    },
+    container: {
+        flex: 1,
     },
     image: {
         flex: 1,
@@ -22,7 +25,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 40,
-        paddingBottom: 40
+        paddingBottom: 40,
+        marginTop: windowHeight > 770 ? 0 : 50,
+        marginBottom: 20,
     },
     textInput: {
         alignItems: 'center',

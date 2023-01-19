@@ -3,9 +3,11 @@ import { theme } from "../../theming";
 
 export const styles = StyleSheet.create({
     screen: {
-        flex: 1,
+        flexGrow: 1,
         justifyContent: 'center',
-        // paddingHorizontal: 16
+    },
+    container: {
+        flex: 1
     },
     image: {
         flex: 1,
