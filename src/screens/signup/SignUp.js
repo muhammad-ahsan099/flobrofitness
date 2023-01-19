@@ -10,7 +10,11 @@ import { theme } from '../../theming'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { UseSignup } from './UseSignup'
 
-const SignUp = () => {
+const Signup = () => {
+  const [{
+    values,
+    handleChange
+  }] = UseSignup()
   return (
     <View style={styles.container}>
       <StatusBar
@@ -137,4 +141,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Signup
