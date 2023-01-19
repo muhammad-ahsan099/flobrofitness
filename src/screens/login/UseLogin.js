@@ -1,12 +1,10 @@
 import { useState } from "react";
 
-export const UseSignup = ()=> {
+export const UseLogin = ()=> {
     const [values, setValues] = useState({
-        firstName: '',
-        lastName: '',
-        userId: '',
         email: '',
         password: '',
+        remember: false
       });
     
       const handleChange = (prop) => (text) => {

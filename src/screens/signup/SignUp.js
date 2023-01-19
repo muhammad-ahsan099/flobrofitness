@@ -8,8 +8,13 @@ import { styles } from './SignupStyle'
 import { SIGNUP_BG, LOGO } from '../../constant/Icons'
 import { theme } from '../../theming'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { UseSignup } from './UseSignup'
 
 const Signup = () => {
+  const [{
+    values,
+    handleChange
+  }] = UseSignup()
   return (
     <View style={styles.container}>
       <StatusBar
@@ -41,6 +46,8 @@ const Signup = () => {
                   after={
                     <Icon name="user" size={26} color="#495057" />
                   }
+                  value={values.firstName} 
+                  onChangeText={handleChange('firstName')}
                 />
                 <TextInput
                   placeholder="Last Name"
@@ -57,6 +64,8 @@ const Signup = () => {
                   after={
                     <Icon name="user" size={26} color="#495057" />
                   }
+                  value={values.lastName} 
+                  onChangeText={handleChange('lastName')}
                 />
                 <TextInput
                   placeholder="User ID"
@@ -68,11 +77,12 @@ const Signup = () => {
                     styles.textInputText,
                   ]}
                   textContentType="username"
-                  autoComplete="email"
                   returnKeyType="next"
                   after={
                     <Icon name="user" size={26} color="#495057" />
                   }
+                  value={values.userId} 
+                  onChangeText={handleChange('userId')}
                 />
                 <TextInput
                   placeholder="Email"
@@ -89,6 +99,8 @@ const Signup = () => {
                   after={
                     <Icon name="envelope" size={22} color="#495057" />
                   }
+                  value={values.email} 
+                  onChangeText={handleChange('email')}
                 />
                 <TextInput
                   placeholder="***********"
@@ -108,6 +120,8 @@ const Signup = () => {
                   after={
                     <Icon name="lock" size={26} color="#495057" />
                   }
+                  value={values.password} 
+                  onChangeText={handleChange('password')}
                 />
               </View>
               <Touchable style={styles.registerBtn}>
