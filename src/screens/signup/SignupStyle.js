@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        // paddingHorizontal: 16
     },
     image: {
         flex: 1,
@@ -17,7 +16,6 @@ export const styles = StyleSheet.create({
     },
     loginBox: {
         backgroundColor: '#fff',
-        // height: '70%', 
         marginHorizontal: 16, 
         borderRadius: 10,
         paddingHorizontal: 15,
@@ -34,6 +32,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: theme.colors.borderColor,
         marginTop: 10,
+        // marginBottom: 16,
     },
     textInputText: {
         fontSize: 14,
@@ -44,28 +43,10 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        marginTop: 14,
+        paddingTop: 10,
         marginBottom: 30,
     },
     loginBtn:{
-        width: '100%',
-        backgroundColor: theme.colors.primary,
-        height: 40,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: theme.colors.primary,
-    },
-    loginBtnText: {
-        fontWeight: '400',
-        fontSize: 20,
-        color: theme.colors.white,
-    },
-    orText: {
-        paddingVertical: 10,
-    },
-    registerBtn:{
         width: '100%',
         backgroundColor: theme.colors.white,
         height: 40,
@@ -75,9 +56,28 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: theme.colors.primary,
     },
-    registerBtnText: {
-        fontWeight: '400',
+    loginBtnText: {
+        fontWeight: '600',
         fontSize: 16,
         color: theme.colors.primary,
+    },
+    orText: {
+        paddingVertical: 10,
+    },
+    registerBtn:{
+        width: '100%',
+        backgroundColor: theme.colors.primary,
+        height: 40,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: theme.colors.primary,
+        marginTop: 12
+    },
+    registerBtnText: {
+        fontWeight: '400',
+        fontSize: 20,
+        color: theme.colors.white,
     },
 })
