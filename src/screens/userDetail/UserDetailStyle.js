@@ -1,10 +1,14 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../assests/colors/Colors";
+import { theme } from "../../theming";
 
 export const Styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.white,
+        backgroundColor: theme.colors.white,
+    },
+    screen: {
+        justifyContent: 'space-between',
     },
     mainContainer: {
         paddingHorizontal: 12,
@@ -71,20 +75,26 @@ export const Styles = StyleSheet.create({
         marginBottom: 10
     },
     bodyBtnContainer: {
+        width: '100%',
         paddingHorizontal: 2,
         paddingVertical: 2,
         flexDirection: 'row',
         marginVertical: 10,
+        // justifyContent: 'center',
+        justifyContent: 'space-evenly',
     },
     bodyBtn: {
         backgroundColor: COLORS.blue,
         height: 40,
-        width: 80,
+        paddingHorizontal: 12,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 4,
-        marginHorizontal: 2
+        marginHorizontal: 2,
+        borderRadius: 3,
+        borderColor: theme.colors.primary,
+        borderWidth: 2,
     },
     bodyBtnTxt: {
         color: COLORS.white,
@@ -94,17 +104,18 @@ export const Styles = StyleSheet.create({
     singleBodyBtn: {
         backgroundColor: COLORS.white,
         height: 40,
-        width: 80,
+        paddingHorizontal: 12,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 4,
-        borderColor: COLORS.blue,
+        borderColor: theme.colors.primary,
         borderWidth: 2,
-        marginHorizontal: 2
+        marginHorizontal: 2,
+        borderRadius: 3
     },
     singleBodyBtnTxt: {
-        color: COLORS.black,
+        borderColor: theme.colors.primary,
         fontSize: 14,
         fontWeight: '600'
     },
@@ -115,16 +126,44 @@ export const Styles = StyleSheet.create({
         padding: 10,
         color: COLORS.black
     },
+    textInput: {
+        alignItems: 'center',
+        height: 40,
+        paddingHorizontal: 10,
+        borderRadius: 0,
+        borderWidth: 1,
+        borderColor: theme.colors.borderColor,
+        marginVertical: 10,
+        marginHorizontal: 6
+    },
+    textInputText: {
+        fontSize: 14,
+        fontWeight: '400',
+        color: '#131e22'
+    },
     inputLarge: {
         height: 150,
-        margin: 12,
+        marginHorizontal: 6,
+        marginVertical: 12,
         borderWidth: 1,
         padding: 10,
-        color: COLORS.black
+        borderWidth: 1,
+        borderColor: theme.colors.borderColor,
     },
     continueBtn: {
         width: '100%',
         alignItems: 'center',
         marginVertical: 12,
+    },
+    saveBtn: {
+        paddingHorizontal: 20,
+        backgroundColor: theme.colors.primary,
+        height: 40,
+        borderRadius: 3,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: theme.colors.primary,
     }
 })

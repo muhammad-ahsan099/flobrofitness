@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchInput: {
+    alignItems: 'center',
     flex: 1,
     padding: 0,
     fontSize: 16,

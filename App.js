@@ -12,7 +12,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         {/* <Setup /> */}
         {/* <LogIn /> */}
-//        <Signup />
+        {/* <Signup /> */}
         <UserDetail />
       </ThemeProvider>
     </SafeAreaProvider>
