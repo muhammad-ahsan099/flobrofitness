@@ -1,4 +1,4 @@
-import { Image, ImageBackground, View } from 'react-native'
+import { Image, ImageBackground, StatusBar, View } from 'react-native'
 import React from 'react'
 import { Screen } from '../../components/screen/Screen'
 import { Text } from '../../components/text/Text'
@@ -11,9 +11,14 @@ import CustomCheckbox from '../../components/checkbox/CustomCheckbox'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-const LogIn = () => {
+const LogIn = ({navigation}) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle={'light-content'}
+      />
       <ImageBackground source={LOGIN_BG} resizeMode="cover" style={styles.image}>
         <Screen
           scroll
@@ -72,7 +77,7 @@ const LogIn = () => {
                 </Touchable>
               </View>
             </View>
-            <Touchable style={styles.loginBtn}>
+            <Touchable style={styles.loginBtn} onPress={()=> navigation.navigate('signup')}>
               <Text style={styles.loginBtnText}>Login</Text>
             </Touchable>
 

@@ -1,0 +1,1 @@
+export const endPoint = 'https://sun-shine123.herokuapp.com/';
