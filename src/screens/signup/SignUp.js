@@ -9,7 +9,7 @@ import { SIGNUP_BG, LOGO } from '../../constant/Icons'
 import { theme } from '../../theming'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-const Signup = () => {
+const SignUp = () => {
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground source={SIGNUP_BG} resizeMode="cover" style={styles.image}>
@@ -137,4 +137,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SignUp

@@ -1,9 +1,10 @@
 import React from 'react'
-import Setup from './src/screens/Setup/Setup'
+// import Setup from './src/screens/Setup/Setup'
 import { theme, ThemeProvider } from './src/theming';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import LogIn from './src/screens/login/LogIn';
-import Signup from './src/screens/signup/Signup';
+// import Subscription from './src/screens/subscription/Subscription';
+// import SignUp from './src/screens/signup/SignUp';
+// import LogIn from './src/screens/login/LogIn';
 import UserDetail from './src/screens/userDetail/UserDetail';
 
 const App = () => {
@@ -12,8 +13,9 @@ const App = () => {
       <ThemeProvider theme={theme}>
         {/* <Setup /> */}
         {/* <LogIn /> */}
-        {/* <Signup /> */}
+        {/* <SignUp /> */}
         <UserDetail />
+        {/* <Subscription /> */}
       </ThemeProvider>
     </SafeAreaProvider>
   )
