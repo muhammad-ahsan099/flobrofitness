@@ -23,7 +23,7 @@ export function Screen({
   contentContainerStyle,
   children,
 }) {
-  const { statusBarInset } = useHeaderHeight();
+  const { bottomInset } = useHeaderHeight();
   const preparedStyle = useMemo(
     () => StyleSheet.flatten([styles.container, style]),
     [style],
@@ -43,7 +43,7 @@ export function Screen({
       contentContainerStyle={styles.container}
       behavior={Platform.select({ ios: keyboardBehavior, default: undefined })}
       keyboardVerticalOffset={
-        keyboardVerticalOffset === undefined ? statusBarInset : keyboardVerticalOffset
+        keyboardVerticalOffset === undefined ? bottomInset : keyboardVerticalOffset
       }
     >
       {/* this is where you would add your top bar with the header or change the navigation system header */}
