@@ -10,15 +10,15 @@ import { theme } from '../../theming';
 import { TextInput } from '../../components/textInput/TextInput';
 import { Touchable } from '../../components/Touchable/Touchable';
 import { Screen } from '../../components/screen/Screen';
-import { UseUserDetail } from './UseUserDetail'
+import UseUserDetail from './UseUserDetail'
 
 const UserDetail = () => {
     // Custom Hook
-    const [{
+    const {
         inputs,
         onChangeHandler,
         addUserHandler,
-    }] = UseUserDetail()
+    } = UseUserDetail()
     // RangeComponent
     const RangeComponent = ({ singleData }) => {
         return (
@@ -164,7 +164,7 @@ const UserDetail = () => {
                             ]}
                             returnKeyType="next"
                             value={inputs?.country}
-                            onChangeText={onChangeHandler('Pakistan')}
+                            onChangeText={text => onChangeHandler(text, 'country')}
                         />
                     </View>
                     <View>
@@ -183,7 +183,7 @@ const UserDetail = () => {
                             textContentType="city"
                             returnKeyType="next"
                             value={inputs?.city}
-                            onChangeText={onChangeHandler('Faisalabad')}
+                            onChangeText={text => onChangeHandler(text, 'city')}
                         />
                     </View>
                     <View>
@@ -202,7 +202,7 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="numeric"
                             value={inputs?.zipCode}
-                            onChangeText={onChangeHandler('000000')}
+                            onChangeText={text => onChangeHandler(text, 'zipCode')}
                         />
                     </View>
                     <View>
@@ -221,7 +221,7 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="default"
                             value={inputs?.address}
-                            onChangeText={onChangeHandler('Something')}
+                            onChangeText={text => onChangeHandler(text, 'address')}
                         />
                     </View>
                     <View>
@@ -239,12 +239,12 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="default"
                             value={inputs?.additionalInfo}
-                            onChangeText={onChangeHandler('Summary')}
+                            onChangeText={text => onChangeHandler(text, 'additionalInfo')}
                         />
                     </View>
                     <View style={Styles.continueBtn}>
-                        <Touchable style={Styles.saveBtn}>
-                            <Text size={16} weight={'medium'} color="white" onPress={addUserHandler}>Save</Text>
+                        <Touchable style={Styles.saveBtn} onPress={addUserHandler}>
+                            <Text size={16} weight={'medium'} color="white">Save</Text>
                         </Touchable>
                     </View>
                 </View>
