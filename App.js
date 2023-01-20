@@ -1,5 +1,5 @@
 import React from 'react'
-import Setup from './src/screens/Setup/Setup'
+// import Setup from './src/screens/Setup/Setup'
 import { theme, ThemeProvider } from './src/theming';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
@@ -16,11 +16,11 @@ const App = () => {
       <Provider store={Store}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-            <AuthStack />
-            {/* <Setup /> */}
-            {/* <LogIn /> */}
-            {/* <Signup /> */}
-            {/* <UserDetail /> */}
+            {/* <AuthStack /> */}
+            {/* <Setup />
+            <LogIn />
+            <Signup /> */}
+            <UserDetail />
           </NavigationContainer>
         </ThemeProvider>
       </Provider>

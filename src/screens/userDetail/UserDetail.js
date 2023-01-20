@@ -10,8 +10,15 @@ import { theme } from '../../theming';
 import { TextInput } from '../../components/textInput/TextInput';
 import { Touchable } from '../../components/Touchable/Touchable';
 import { Screen } from '../../components/screen/Screen';
+import { UseUserDetail } from './UseUserDetail'
 
 const UserDetail = () => {
+    // Custom Hook
+    const [{
+        inputs,
+        onChangeHandler,
+        addUserHandler,
+    }] = UseUserDetail()
     // RangeComponent
     const RangeComponent = ({ singleData }) => {
         return (
@@ -156,6 +163,8 @@ const UserDetail = () => {
                                 Styles.textInputText,
                             ]}
                             returnKeyType="next"
+                            value={inputs?.country}
+                            onChangeText={onChangeHandler('Pakistan')}
                         />
                     </View>
                     <View>
@@ -173,6 +182,8 @@ const UserDetail = () => {
                             ]}
                             textContentType="city"
                             returnKeyType="next"
+                            value={inputs?.city}
+                            onChangeText={onChangeHandler('Faisalabad')}
                         />
                     </View>
                     <View>
@@ -190,6 +201,8 @@ const UserDetail = () => {
                             ]}
                             returnKeyType="next"
                             keyboardType="numeric"
+                            value={inputs?.zipCode}
+                            onChangeText={onChangeHandler('000000')}
                         />
                     </View>
                     <View>
@@ -207,6 +220,8 @@ const UserDetail = () => {
                             ]}
                             returnKeyType="next"
                             keyboardType="default"
+                            value={inputs?.address}
+                            onChangeText={onChangeHandler('Something')}
                         />
                     </View>
                     <View>
@@ -223,11 +238,13 @@ const UserDetail = () => {
                             ]}
                             returnKeyType="next"
                             keyboardType="default"
+                            value={inputs?.additionalInfo}
+                            onChangeText={onChangeHandler('Summary')}
                         />
                     </View>
                     <View style={Styles.continueBtn}>
                         <Touchable style={Styles.saveBtn}>
-                            <Text size={16} weight={'medium'} color="white">Save</Text>
+                            <Text size={16} weight={'medium'} color="white" onPress={addUserHandler}>Save</Text>
                         </Touchable>
                     </View>
                 </View>
