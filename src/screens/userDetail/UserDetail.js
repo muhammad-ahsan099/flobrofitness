@@ -1,7 +1,7 @@
 import { View, ScrollView, TouchableOpacity } from 'react-native'
 import Slider from "react-native-slider";
 import { Text } from '../../components/text/Text';
-import React from 'react'
+import React, { useState } from 'react'
 import { Styles } from "./UserDetailStyle";
 import { COLORS } from "../../assests/colors/Colors";
 import { USER_FIELDS_DATA } from "../../constant/CustomData/CustomData";
@@ -20,7 +20,9 @@ const UserDetail = () => {
         addUserHandler,
     }] = UseUserDetail()
     // RangeComponent
-    const RangeComponent = ({ singleData }) => {
+    const RangeComponent = ({ singleData, maxValue, minValue }) => {
+        const [sliderValue, setSliderValue] = useState(0)
+        console.log('Value: ', sliderValue);
         return (
             <>
                 <View key={singleData?.id}>
@@ -33,10 +35,16 @@ const UserDetail = () => {
                         </Text>
                         <View style={Styles.rangesDiv}>
                             <Slider
+                                maximumValue={maxValue}
+                                // minimumValue={0}
+                                step={1}
                                 maximumTrackTintColor={'gray'}
                                 minimumTrackTintColor={theme.colors.primary}
                                 thumbTintColor={theme.colors.primary}
                                 trackStyle={{ height: 6 }}
+                                value={sliderValue}
+                                onValueChange={(sliderValue) => setSliderValue(sliderValue)}
+
                             />
                         </View>
                     </View>
@@ -81,6 +89,8 @@ const UserDetail = () => {
 
                     <RangeComponent
                         singleData={USER_FIELDS_DATA?.userData[0]}
+                        maxValue={90}
+                        minValue={13}
                     />
                     <RangeComponent
                         singleData={USER_FIELDS_DATA?.userData[1]}

@@ -2,6 +2,10 @@ import { useState } from 'react'
 
 export const UseUserDetail = () => {
     const [inputs, setInputs] = useState({
+        gender: '',
+        age: 0,
+        height: 0,
+        weight: 0,
         country: '',
         city: '',
         zipCode: '',
