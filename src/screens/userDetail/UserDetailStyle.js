@@ -141,7 +141,8 @@ export const Styles = StyleSheet.create({
     textInputText: {
         fontSize: 14,
         fontWeight: '400',
-        color: '#131e22'
+        color: '#131e22',
+        fontFamily: fontStyle?.PoppinsMedium
     },
     inputLarge: {
         height: 150,
