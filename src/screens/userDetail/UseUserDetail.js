@@ -1,6 +1,12 @@
 import { useState } from 'react'
+import { addUser } from "../../redux/actions/Actions";
+import { useDispatch,useSelector } from "react-redux";
 
-export const UseUserDetail = () => {
+const UseUserDetail = () => {
+    const dispatch = useDispatch();
+    const storeData = useSelector((store)=> store.Reducer.userData);
+    console.log(storeData,"store data");
+    
     const [inputs, setInputs] = useState({
         country: '',
         city: '',
@@ -8,11 +14,9 @@ export const UseUserDetail = () => {
         address: '',
         additionalInfo: '',
     });
-
-    const onChangeHandler = (prop) => (text) => {
-        setInputs({ ...inputs, [prop]: text });
-    };
-
+    const onChangeHandler = (text, input) => {
+        setInputs(preState => ({ ...preState, [input]: text }))
+    }
     // Add Data
     const addUserHandler = () => {
         if (!inputs.additionalInfo || !inputs.address || !inputs.city || !inputs.country || !inputs.zipCode) {
@@ -26,11 +30,20 @@ export const UseUserDetail = () => {
             address: inputs.address,
             additionalInfo: inputs.additionalInfo,
         }
-        console.log(singleUser, 'data');
+        dispatch(addUser(singleUser))
+        setInputs({
+            country: '',
+            city: '',
+            zipCode: '',
+            address: '',
+            additionalInfo: '',
+        })
     }
-    return [{
+    return {
         inputs,
         onChangeHandler,
         addUserHandler,
-    }]
+    }
 }
+
+export default UseUserDetail
