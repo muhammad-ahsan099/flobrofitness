@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../assests/colors/Colors";
 import { theme } from "../../theming";
+import { fontStyle } from "../../assests/fonts/Font";
 
 export const Styles = StyleSheet.create({
     container: {
@@ -29,6 +30,7 @@ export const Styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '500',
         color: COLORS.blue,
+        fontFamily: fontStyle?.PoppinsMedium
     },
     genderBtnContainer: {
         borderColor: '#CCC',
@@ -47,12 +49,12 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingBottom: 4,
     },
     femaleBtnTxt: {
         color: COLORS.white,
         fontSize: 14,
-        fontWeight: '500'
+        fontWeight: '500',
+        fontFamily: fontStyle?.PoppinsMedium
     },
     maleBtn: {
         backgroundColor: COLORS.white,
@@ -62,12 +64,12 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingBottom: 4,
     },
     maleBtnTxt: {
         color: COLORS.black,
         fontSize: 14,
-        fontWeight: '600'
+        fontWeight: '500',
+        fontFamily: fontStyle?.PoppinsMedium
     },
     rangesDiv: {
         width: '80%',
@@ -86,11 +88,10 @@ export const Styles = StyleSheet.create({
     bodyBtn: {
         backgroundColor: COLORS.blue,
         height: 40,
-        paddingHorizontal: 12,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: 4,
         marginHorizontal: 2,
         borderRadius: 3,
         borderColor: theme.colors.primary,
@@ -99,16 +100,16 @@ export const Styles = StyleSheet.create({
     bodyBtnTxt: {
         color: COLORS.white,
         fontSize: 14,
-        fontWeight: '500'
+        fontWeight: '500',
+        fontFamily: fontStyle?.PoppinsMedium
     },
     singleBodyBtn: {
         backgroundColor: COLORS.white,
         height: 40,
-        paddingHorizontal: 12,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: 4,
         borderColor: theme.colors.primary,
         borderWidth: 2,
         marginHorizontal: 2,
@@ -117,7 +118,8 @@ export const Styles = StyleSheet.create({
     singleBodyBtnTxt: {
         borderColor: theme.colors.primary,
         fontSize: 14,
-        fontWeight: '600'
+        fontWeight: '500',
+        fontFamily: fontStyle?.PoppinsMedium
     },
     input: {
         height: 40,
