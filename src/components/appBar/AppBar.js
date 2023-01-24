@@ -11,9 +11,9 @@ const AppBar = () => {
         <Image source={LOGO} style={Styles.navLogo} />
       </View>
       <View style={Styles.peofileDiv}>
-        <Image source={LOGO} style={Styles.sideLogo} />
+        {/* <Image source={LOGO} style={Styles.sideLogo} /> */}
         <TouchableOpacity>
-          <Text style={Styles.profileTxt}>Username</Text>
+          <Text style={Styles.profileTxt}>Test</Text>
         </TouchableOpacity>
         <AntDesign name='caretdown' size={8} color={'#000000'} />
       </View>

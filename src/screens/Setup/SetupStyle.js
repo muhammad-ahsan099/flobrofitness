@@ -1,7 +1,12 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../assests/colors/Colors";
+import { theme } from "../../theming";
 
 export const Styles = StyleSheet.create({
+    main: {
+        flex: 1,
+        backgroundColor: '#fff'
+    },
     container: {
         flex: 1,
         backgroundColor: COLORS.white,
@@ -114,16 +119,46 @@ export const Styles = StyleSheet.create({
         marginHorizontal: 12
     },
     termsDes: {
-        color: COLORS.blue,
+        color: theme.colors.primary,
         fontSize: 16,
         fontWeight: '500',
         marginVertical: 12,
         marginHorizontal: 12
     },
+    termsDesp: {
+        color: theme.colors.primary,
+        fontSize: 16,
+        fontWeight: '500',
+        alignItems: 'center',
+    },
+    termsView: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        flexWrap: 'wrap',
+        marginHorizontal: 12,
+    },
+    section: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        marginLeft: 8
+
+    },
     continueBtn: {
         width: '100%',
-        alignItems: 'flex-end',
-        paddingRight: 22,
+        alignItems: 'center',
         marginVertical: 12,
+    },
+    saveBtn: {
+        paddingHorizontal: 20,
+        backgroundColor: theme.colors.primary,
+        height: 40,
+        borderRadius: 3,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: theme.colors.primary,
     }
 })

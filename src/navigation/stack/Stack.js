@@ -1,6 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const AppStack = createNativeStackNavigator();
+import Setup from '../../screens/Setup/Setup'
+import UserDetail from '../../screens/userDetail/UserDetail'
+
 
 // StackContainer
 function StackContainer() {
@@ -11,15 +14,15 @@ function StackContainer() {
   };
 
   return (
-    <AppStack.Navigator initialRouteName={'DecisionLoader'}>
+    <AppStack.Navigator initialRouteName={'Setup'}>
        <AppStack.Screen
-        name="DecisionLoader"
-        component={DecisionLoader}
+        name="Setup"
+        component={Setup}
         options={options}
       />
       <AppStack.Screen
-        name="BottomTabs"
-        component={BottomTabs}
+        name="UserDetail"
+        component={UserDetail}
         options={options}
       />
     </AppStack.Navigator>

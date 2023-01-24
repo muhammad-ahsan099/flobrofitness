@@ -12,7 +12,7 @@ export const Styles = StyleSheet.create({
     },
     mainContainer: {
         paddingHorizontal: 12,
-        paddingVertical: 4,
+        paddingVertical: 10,
     },
     genderDiv: {
         flexDirection: 'column',

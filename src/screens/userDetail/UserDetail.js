@@ -5,53 +5,52 @@ import React, { useState } from 'react'
 import { Styles } from "./UserDetailStyle";
 import { COLORS } from "../../assests/colors/Colors";
 import { USER_FIELDS_DATA } from "../../constant/CustomData/CustomData";
-import CustomButton from '../../components/button/CustomButton';
 import { theme } from '../../theming';
 import { TextInput } from '../../components/textInput/TextInput';
 import { Touchable } from '../../components/Touchable/Touchable';
 import { Screen } from '../../components/screen/Screen';
-import { UseUserDetail } from './UseUserDetail'
+import UseUserDetail from './UseUserDetail'
+import AppBar from '../../components/appBar/AppBar';
 
 const UserDetail = () => {
     // Custom Hook
-    const [{
+    const {
         inputs,
         onChangeHandler,
+        gender,
+        bodyName,
+        genderPress,
+        bodyType,
+        radioPress,
         addUserHandler,
-    }] = UseUserDetail()
-    // RangeComponent
-    const RangeComponent = ({ singleData, maxValue, minValue }) => {
-        const [sliderValue, setSliderValue] = useState(0)
-        console.log('Value: ', sliderValue);
-        return (
-            <>
-                <View key={singleData?.id}>
-                    <Text color='primary' size={16} weight={'medium'} >
-                        {singleData?.heading}
-                    </Text>
-                    <View style={Styles.genderDiv}>
-                        <Text style={Styles.genderHeadingTxt}>
-                            {singleData?.text}
-                        </Text>
-                        <View style={Styles.rangesDiv}>
-                            <Slider
-                                maximumValue={maxValue}
-                                // minimumValue={0}
-                                step={1}
-                                maximumTrackTintColor={'gray'}
-                                minimumTrackTintColor={theme.colors.primary}
-                                thumbTintColor={theme.colors.primary}
-                                trackStyle={{ height: 6 }}
-                                value={sliderValue}
-                                onValueChange={(sliderValue) => setSliderValue(sliderValue)}
+    } = UseUserDetail()
 
-                            />
-                        </View>
-                    </View>
+    const BodyTypeButton = ({ bodyType, radioPress }) => {
+        return (
+            <TouchableOpacity onPress={radioPress}>
+                <View
+                    style={
+                        bodyType.status ?
+                            Styles.bodyBtn
+                            :
+                            Styles.singleBodyBtn
+                    }
+                >
+                    <Text
+                        style={
+                            bodyType?.status ?
+                                Styles.bodyBtnTxt
+                                :
+                                Styles.singleBodyBtnTxt
+                        }
+                    >
+                        {bodyType?.title}
+                    </Text>
                 </View>
-            </>
+            </TouchableOpacity>
         )
     }
+
     return (
         <View style={Styles.container}>
             <Screen
@@ -59,26 +58,28 @@ const UserDetail = () => {
                 safeArea
                 contentContainerStyle={Styles.screen}
             >
+                <AppBar />
                 <View style={Styles.mainContainer}>
                     <View>
+
                         <Text color='primary' size={16} weight={'medium'} >
                             What's Your Gender?
                         </Text>
                         <View style={Styles.genderDiv}>
                             <Text style={Styles.genderHeadingTxt}>
-                                My Sex Is: Female
+                                My Sex Is: {gender}
                             </Text>
                             <View style={Styles.genderBtnContainer}>
-                                <TouchableOpacity>
-                                    <View style={Styles.femaleBtn}>
-                                        <Text style={Styles.femaleBtnTxt}>
+                                <TouchableOpacity onPress={() => genderPress("Female")}>
+                                    <View style={[Styles.maleBtn, { backgroundColor: gender === "Female" ? theme.colors.primary : theme.colors.white }]}>
+                                        <Text style={[Styles.maleBtnTxt, { color: gender === 'Female' ? theme.colors.white : theme.colors.primary }]}>
                                             Female
                                         </Text>
                                     </View>
                                 </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <View style={Styles.maleBtn}>
-                                        <Text style={Styles.maleBtnTxt}>
+                                <TouchableOpacity onPress={() => genderPress("Male")}>
+                                    <View style={[Styles.maleBtn, { backgroundColor: gender === "Male" ? theme.colors.primary : theme.colors.white }]}>
+                                        <Text style={[Styles.maleBtnTxt, { color: gender === 'Male' ? theme.colors.white : theme.colors.primary }]}>
                                             Male
                                         </Text>
                                     </View>
@@ -87,75 +88,101 @@ const UserDetail = () => {
                         </View>
                     </View>
 
-                    <RangeComponent
-                        singleData={USER_FIELDS_DATA?.userData[0]}
-                        maxValue={90}
-                        minValue={13}
-                    />
-                    <RangeComponent
-                        singleData={USER_FIELDS_DATA?.userData[1]}
-                    />
-                    <RangeComponent
-                        singleData={USER_FIELDS_DATA?.userData[2]}
-                    />
+                    <View>
+                        <Text color='primary' size={16} weight={'medium'} >
+                            {'How Old Are You?'}
+                        </Text>
+                        <View style={Styles.genderDiv}>
+                            <Text style={Styles.genderHeadingTxt}>
+                                {`I Am: ${inputs.age} Years Old`}
+                            </Text>
+                            <View style={Styles.rangesDiv}>
+                                <Slider
+                                    maximumValue={90}
+                                    minimumValue={0}
+                                    step={1}
+                                    maximumTrackTintColor={'gray'}
+                                    minimumTrackTintColor={theme.colors.primary}
+                                    thumbTintColor={theme.colors.primary}
+                                    trackStyle={{ height: 6 }}
+                                    value={inputs.age}
+                                    onValueChange={onChangeHandler('age')}
+
+                                />
+                            </View>
+                        </View>
+                    </View>
+
+                    <View>
+                        <Text color='primary' size={16} weight={'medium'} >
+                            {'How Tall Are You?'}
+                        </Text>
+                        <View style={Styles.genderDiv}>
+                            <Text style={Styles.genderHeadingTxt}>
+                                {`My Height Is: 3 Feet 0 Inches`}
+                            </Text>
+                            <View style={Styles.rangesDiv}>
+                                <Slider
+                                    maximumValue={90}
+                                    minimumValue={0}
+                                    step={1}
+                                    maximumTrackTintColor={'gray'}
+                                    minimumTrackTintColor={theme.colors.primary}
+                                    thumbTintColor={theme.colors.primary}
+                                    trackStyle={{ height: 6 }}
+                                    value={inputs.height}
+                                    onValueChange={onChangeHandler('height')}
+
+                                />
+                            </View>
+                        </View>
+                    </View>
+
+                    <View>
+                        <Text color='primary' size={16} weight={'medium'} >
+                            {'How Much Do You Weigh?'}
+                        </Text>
+                        <View style={Styles.genderDiv}>
+                            <Text style={Styles.genderHeadingTxt}>
+                                {`My Weight Is: ${inputs.weight} lbs`}
+                            </Text>
+                            <View style={Styles.rangesDiv}>
+                                <Slider
+                                    maximumValue={400}
+                                    minimumValue={0}
+                                    step={1}
+                                    maximumTrackTintColor={'gray'}
+                                    minimumTrackTintColor={theme.colors.primary}
+                                    thumbTintColor={theme.colors.primary}
+                                    trackStyle={{ height: 6 }}
+                                    value={inputs.weight}
+                                    onValueChange={onChangeHandler('weight')}
+
+                                />
+                            </View>
+                        </View>
+                    </View>
+
                     <View>
                         <Text color='primary' size={16} weight={'medium'} >
                             What Is Your Body Type?
                         </Text>
                         <View style={Styles.genderDiv}>
                             <Text style={Styles.genderHeadingTxt}>
-                                My Body Type Is: Ectomorph
+                                My Body Type Is: {bodyName.title ? bodyName.title : bodyName}
                             </Text>
                             <View style={Styles.bodyBtnContainer}>
-                                <TouchableOpacity>
-                                    <View style={Styles.bodyBtn}>
-                                        <Text style={Styles.bodyBtnTxt}>
-                                            {USER_FIELDS_DATA?.bodyBtnData?.istBtn?.text}
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <View
-                                        style={
-                                            USER_FIELDS_DATA?.bodyBtnData?.secondBtn?.btnStatus ?
-                                                Styles.bodyBtn
-                                                :
-                                                Styles.singleBodyBtn
-                                        }
-                                    >
-                                        <Text
-                                            style={
-                                                USER_FIELDS_DATA?.bodyBtnData?.secondBtn?.btnStatus ?
-                                                    Styles.bodyBtnTxt
-                                                    :
-                                                    Styles.singleBodyBtnTxt
+                                {
+                                    bodyType.map((item, index) => (
+                                        <BodyTypeButton
+                                            bodyType={item}
+                                            radioPress={() =>
+                                                radioPress(item.title, index)
                                             }
-                                        >
-                                            {USER_FIELDS_DATA?.bodyBtnData?.secondBtn?.text}
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <View
-                                        style={
-                                            USER_FIELDS_DATA?.bodyBtnData?.thirdBtn?.btnStatus ?
-                                                Styles.bodyBtn
-                                                :
-                                                Styles.singleBodyBtn
-                                        }
-                                    >
-                                        <Text
-                                            style={
-                                                USER_FIELDS_DATA?.bodyBtnData?.thirdBtn?.btnStatus ?
-                                                    Styles.bodyBtnTxt
-                                                    :
-                                                    Styles.singleBodyBtnTxt
-                                            }
-                                        >
-                                            {USER_FIELDS_DATA?.bodyBtnData?.thirdBtn?.text}
-                                        </Text>
-                                    </View>
-                                </TouchableOpacity>
+
+                                        />
+                                    ))
+                                }
                             </View>
                         </View>
                     </View>
@@ -174,7 +201,7 @@ const UserDetail = () => {
                             ]}
                             returnKeyType="next"
                             value={inputs?.country}
-                            onChangeText={onChangeHandler('Pakistan')}
+                            onChangeText={text => onChangeHandler(text, 'country')}
                         />
                     </View>
                     <View>
@@ -190,10 +217,9 @@ const UserDetail = () => {
                             style={[
                                 Styles.textInputText,
                             ]}
-                            textContentType="city"
                             returnKeyType="next"
                             value={inputs?.city}
-                            onChangeText={onChangeHandler('Faisalabad')}
+                            onChangeText={text => onChangeHandler(text, 'city')}
                         />
                     </View>
                     <View>
@@ -212,7 +238,7 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="numeric"
                             value={inputs?.zipCode}
-                            onChangeText={onChangeHandler('000000')}
+                            onChangeText={text => onChangeHandler(text, 'zipCode')}
                         />
                     </View>
                     <View>
@@ -231,7 +257,7 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="default"
                             value={inputs?.address}
-                            onChangeText={onChangeHandler('Something')}
+                            onChangeText={text => onChangeHandler(text, 'address')}
                         />
                     </View>
                     <View>
@@ -249,12 +275,12 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="default"
                             value={inputs?.additionalInfo}
-                            onChangeText={onChangeHandler('Summary')}
+                            onChangeText={text => onChangeHandler(text, 'additionalInfo')}
                         />
                     </View>
                     <View style={Styles.continueBtn}>
-                        <Touchable style={Styles.saveBtn}>
-                            <Text size={16} weight={'medium'} color="white" onPress={addUserHandler}>Save</Text>
+                        <Touchable style={Styles.saveBtn} onPress={addUserHandler}>
+                            <Text size={16} weight={'medium'} color="white">Save</Text>
                         </Touchable>
                     </View>
                 </View>
