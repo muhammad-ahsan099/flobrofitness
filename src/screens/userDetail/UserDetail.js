@@ -11,6 +11,7 @@ import { Touchable } from '../../components/Touchable/Touchable';
 import { Screen } from '../../components/screen/Screen';
 import UseUserDetail from './UseUserDetail'
 import AppBar from '../../components/appBar/AppBar';
+import { fontStyle } from "../../assests/fonts/Font";
 
 const UserDetail = () => {
     // Custom Hook
@@ -61,8 +62,7 @@ const UserDetail = () => {
                 <AppBar />
                 <View style={Styles.mainContainer}>
                     <View>
-
-                        <Text color='primary' size={16} weight={'medium'} >
+                        <Text color='primary' size={16} weight={'medium'} style={{ fontFamily: fontStyle?.PoppinsBold }}>
                             What's Your Gender?
                         </Text>
                         <View style={Styles.genderDiv}>
@@ -164,7 +164,7 @@ const UserDetail = () => {
                     </View>
 
                     <View>
-                        <Text color='primary' size={16} weight={'medium'} >
+                        <Text color='primary' size={16} weight={'medium'} style={{ fontFamily: fontStyle?.PoppinsBold }}>
                             What Is Your Body Type?
                         </Text>
                         <View style={Styles.genderDiv}>
@@ -187,7 +187,7 @@ const UserDetail = () => {
                         </View>
                     </View>
                     <View>
-                        <Text color='lightGrey' size={16} weight={'medium'} >
+                        <Text color='lightGrey' size={16} weight={'medium'} style={{ fontFamily: fontStyle?.PoppinsBold }}>
                             Country
                         </Text>
                         <TextInput
@@ -205,7 +205,7 @@ const UserDetail = () => {
                         />
                     </View>
                     <View>
-                        <Text color='lightGrey' size={16} weight={'medium'} >
+                        <Text color='lightGrey' size={16} weight={'medium'} style={{ fontFamily: fontStyle?.PoppinsBold }}>
                             City
                         </Text>
                         <TextInput
@@ -223,7 +223,7 @@ const UserDetail = () => {
                         />
                     </View>
                     <View>
-                        <Text color='lightGrey' size={16} weight={'medium'} >
+                        <Text color='lightGrey' size={16} weight={'medium'} style={{ fontFamily: fontStyle?.PoppinsBold }}>
                             Zip Code
                         </Text>
                         <TextInput
@@ -242,7 +242,7 @@ const UserDetail = () => {
                         />
                     </View>
                     <View>
-                        <Text color='lightGrey' size={16} weight={'medium'} >
+                        <Text color='lightGrey' size={16} weight={'medium'} style={{ fontFamily: fontStyle?.PoppinsBold }}>
                             Address
                         </Text>
 
@@ -261,7 +261,7 @@ const UserDetail = () => {
                         />
                     </View>
                     <View>
-                        <Text color='lightGrey' size={16} weight={'medium'} >
+                        <Text color='lightGrey' size={16} weight={'medium'} style={{ fontFamily: fontStyle?.PoppinsBold }}>
                             Additional Info
                         </Text>
                         <TextInput
