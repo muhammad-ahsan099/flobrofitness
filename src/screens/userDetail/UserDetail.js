@@ -104,7 +104,7 @@ const UserDetail = () => {
                                     maximumTrackTintColor={'gray'}
                                     minimumTrackTintColor={theme.colors.primary}
                                     thumbTintColor={theme.colors.primary}
-                                    trackStyle={{ height: 6 }}
+                                    trackStyle={{ height: 3 }}
                                     value={inputs.age}
                                     onValueChange={onChangeHandler('age')}
 
@@ -129,7 +129,7 @@ const UserDetail = () => {
                                     maximumTrackTintColor={'gray'}
                                     minimumTrackTintColor={theme.colors.primary}
                                     thumbTintColor={theme.colors.primary}
-                                    trackStyle={{ height: 6 }}
+                                    trackStyle={{ height: 3 }}
                                     value={inputs.height}
                                     onValueChange={onChangeHandler('height')}
 
@@ -154,7 +154,7 @@ const UserDetail = () => {
                                     maximumTrackTintColor={'gray'}
                                     minimumTrackTintColor={theme.colors.primary}
                                     thumbTintColor={theme.colors.primary}
-                                    trackStyle={{ height: 6 }}
+                                    trackStyle={{ height: 3 }}
                                     value={inputs.weight}
                                     onValueChange={onChangeHandler('weight')}
 

@@ -10,18 +10,12 @@ export default function Navigation() {
     const isUserLoggedIn = useSelector(state => state.AuthReducer.isUserLoggedIn)
 
     return (
-        <AppStackNavigator.Navigator screenOptions={{ headerShown: false }}>
+        <>
             {!isUserLoggedIn ? (
-                <AppStackNavigator.Screen
-                    name="AuthStack"
-                    component={AuthStack}
-                />
+                <AuthStack />
             ) : (
-                <AppStackNavigator.Screen
-                    name="StackContainer"
-                    component={StackContainer}
-                />
+                <StackContainer />
             )}
-        </AppStackNavigator.Navigator>
+        </>
     )
 }
