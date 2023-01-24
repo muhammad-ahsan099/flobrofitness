@@ -1,4 +1,4 @@
-import { Image, ImageBackground, StatusBar, View } from 'react-native'
+import { Image, ImageBackground, ScrollView, StatusBar, View } from 'react-native'
 import React from 'react'
 import { Screen } from '../../components/screen/Screen'
 import { Text } from '../../components/text/Text'
@@ -15,7 +15,8 @@ import { UseLogin } from './UseLogin'
 const LogIn = ({ navigation }) => {
   const [{
     values,
-    handleChange
+    handleChange,
+    loginHandler,
   }] = UseLogin()
   return (
     <View style={styles.container}>
@@ -25,10 +26,9 @@ const LogIn = ({ navigation }) => {
         barStyle={'light-content'}
       />
       <ImageBackground source={LOGIN_BG} resizeMode="cover" style={styles.image}>
-        <Screen
-          scroll
+        <ScrollView
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.screen}
-          keyboardBehavior={'padding'}
         >
           <View style={styles.loginBox}>
             <Image source={LOGO} resizeMode='cover' style={styles.logo} />
@@ -80,17 +80,17 @@ const LogIn = ({ navigation }) => {
                 </Touchable>
               </View>
             </View>
-            <Touchable style={styles.loginBtn} onPress={() => navigation.navigate('signup')}>
+            <Touchable style={styles.loginBtn} onPress={() => loginHandler()}>
               <Text style={styles.loginBtnText}>Login</Text>
             </Touchable>
 
             <Text color='primary' size={16} weight='medium' style={styles.orText}>OR</Text>
 
-            <Touchable style={styles.registerBtn}>
+            <Touchable style={styles.registerBtn} onPress={() => navigation.navigate('signup')}>
               <Text style={styles.registerBtnText}>Register</Text>
             </Touchable>
           </View>
-        </Screen>
+        </ScrollView>
       </ImageBackground>
     </View>
   )

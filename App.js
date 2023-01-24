@@ -4,11 +4,9 @@ import { theme, ThemeProvider } from './src/theming';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import Store from './src/config/Store';
-import LogIn from './src/screens/login/LogIn';
-import Signup from './src/screens/signup/Signup';
-import UserDetail from './src/screens/userDetail/UserDetail';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './src/navigation/authStack/AuthStack';
+import Navigation from './src/navigation/Navigation';
 
 const App = () => {
   return (
@@ -16,11 +14,11 @@ const App = () => {
       <Provider store={Store}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-            {/* <AuthStack /> */}
-            {/* <Setup />
-            <LogIn />
-            <Signup /> */}
-            <UserDetail />
+            <Navigation />
+            {/* <Setup /> */}
+            {/* <LogIn /> */}
+            {/* <Signup /> */}
+            {/* <UserDetail /> */}
           </NavigationContainer>
         </ThemeProvider>
       </Provider>

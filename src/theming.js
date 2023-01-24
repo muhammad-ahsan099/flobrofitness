@@ -17,7 +17,7 @@ export const theme = {
   colors: {
     primary: '#184163',
     lightPrimary: '#031e23',
-    secondary: palette.brandColorsVoxoMobileRed,
+    secondary: '#337ab7',
     action: palette.brandColorsVoxoMobileRed,
     danger: palette.uiColorsUiDanger,
     success: palette.uiColorsUiSuccess,

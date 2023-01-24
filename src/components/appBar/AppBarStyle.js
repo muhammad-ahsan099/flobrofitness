@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 export const Styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        paddingVertical: 2,
-        paddingHorizontal: 8,
+        paddingVertical: 4,
+        paddingHorizontal: 12,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

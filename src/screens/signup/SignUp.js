@@ -10,7 +10,7 @@ import { theme } from '../../theming'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { UseSignup } from './UseSignup'
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   const [{
     values,
     handleChange
@@ -130,7 +130,7 @@ const Signup = () => {
 
               <Text color='primary' size={16} weight='medium' style={styles.orText}>OR</Text>
 
-              <Touchable style={styles.loginBtn}>
+              <Touchable style={styles.loginBtn} onPress={()=> navigation.navigate('login')}>
                 <Text style={styles.loginBtnText}>Login</Text>
               </Touchable>
             </View>
