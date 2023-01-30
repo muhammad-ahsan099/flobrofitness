@@ -47,12 +47,11 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingBottom: 4,
     },
     femaleBtnTxt: {
         color: COLORS.white,
         fontSize: 14,
-        fontWeight: '500'
+        fontWeight: '500',
     },
     maleBtn: {
         backgroundColor: COLORS.white,
@@ -62,12 +61,11 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingBottom: 4,
     },
     maleBtnTxt: {
         color: COLORS.black,
         fontSize: 14,
-        fontWeight: '600'
+        fontWeight: '500',
     },
     rangesDiv: {
         width: '80%',
@@ -86,11 +84,10 @@ export const Styles = StyleSheet.create({
     bodyBtn: {
         backgroundColor: COLORS.blue,
         height: 40,
-        paddingHorizontal: 12,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: 4,
         marginHorizontal: 2,
         borderRadius: 3,
         borderColor: theme.colors.primary,
@@ -99,16 +96,15 @@ export const Styles = StyleSheet.create({
     bodyBtnTxt: {
         color: COLORS.white,
         fontSize: 14,
-        fontWeight: '500'
+        fontWeight: '500',
     },
     singleBodyBtn: {
         backgroundColor: COLORS.white,
         height: 40,
-        paddingHorizontal: 12,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: 4,
         borderColor: theme.colors.primary,
         borderWidth: 2,
         marginHorizontal: 2,
@@ -117,7 +113,7 @@ export const Styles = StyleSheet.create({
     singleBodyBtnTxt: {
         borderColor: theme.colors.primary,
         fontSize: 14,
-        fontWeight: '600'
+        fontWeight: '500',
     },
     input: {
         height: 40,
@@ -139,7 +135,7 @@ export const Styles = StyleSheet.create({
     textInputText: {
         fontSize: 14,
         fontWeight: '400',
-        color: '#131e22'
+        color: '#131e22',
     },
     inputLarge: {
         height: 150,

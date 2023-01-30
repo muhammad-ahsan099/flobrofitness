@@ -8,11 +8,13 @@ export function Text({
   size = 14,
   children,
   weight,
+  fonts,
   ...rest
 }) {
   const theme = useTheme();
   const textColor = theme.colors[color];
   const fontweight = theme.fonts[weight]
+  // const fontFamily = fonts ? theme.fontFamily[fonts] : theme.fontFamily['InterBlack']
   return (
     <NativeText
       {...rest}
@@ -21,7 +23,7 @@ export function Text({
           fontSize: size,
           color: textColor,
           fontWeight: fontweight,
-          // fontFamily: 'Poppins'
+          // fontFamily: fontFamily,
         },
         style,
       ]}

@@ -61,7 +61,6 @@ const UserDetail = () => {
                 <AppBar />
                 <View style={Styles.mainContainer}>
                     <View>
-
                         <Text color='primary' size={16} weight={'medium'} >
                             What's Your Gender?
                         </Text>

@@ -41,6 +41,17 @@ export const theme = {
     semiBold: '700',
     bold: '900'
   },
+  fontFamily: {
+    InterBlack: `Inter-Black`,
+    InterBold: `Inter-Bold`,
+    InterExtraBold: `Inter-ExtraBold`,
+    InterExtraLight: `Inter-ExtraLight`,
+    InterLight: `Inter-Light`,
+    InterMedium: `Inter-Medium`,
+    InterRegular: `Inter-Regular`,
+    InterSemiBold: `Inter-SemiBold`,
+    InterThin: `Inter-Thin`,
+  },
   animation: {
     scale: 1.0,
   },
