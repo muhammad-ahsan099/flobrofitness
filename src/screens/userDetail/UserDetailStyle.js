@@ -137,6 +137,19 @@ export const Styles = StyleSheet.create({
         fontWeight: '400',
         color: '#131e22',
     },
+    countryInput: {
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        height: 40,
+        paddingHorizontal: 10,
+        borderRadius: 0,
+        borderWidth: 1,
+        borderColor: theme.colors.borderColor,
+        marginVertical: 10,
+        marginTop: 10,
+        marginHorizontal: 6,
+        color: theme.colors.lightGrey
+    },
     inputLarge: {
         height: 150,
         marginHorizontal: 6,
@@ -152,7 +165,7 @@ export const Styles = StyleSheet.create({
         marginVertical: 12,
     },
     saveBtn: {
-        paddingHorizontal: 20,
+        width: 90,
         backgroundColor: theme.colors.primary,
         height: 40,
         borderRadius: 3,
@@ -161,5 +174,31 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         borderColor: theme.colors.primary,
-    }
+    },
+    mainContainerTop: {
+        flex: 2,
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: COLORS.blue,
+        paddingTop: 30,
+        paddingBottom: 20,
+    },
+    logoImgStyle: {
+        height: 180,
+        width: 150,
+    },
+    mainHeading: {
+        fontSize: 28,
+        color: COLORS.white,
+        fontWeight: '700',
+        textAlign: 'center',
+        marginBottom: 5
+    },
+    secHeading: {
+        fontSize: 12,
+        color: COLORS.white,
+        textAlign: 'center',
+        fontWeight: '500',
+        marginBottom: 5
+    },
 })

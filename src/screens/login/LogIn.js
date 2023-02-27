@@ -1,4 +1,4 @@
-import { Image, ImageBackground, ScrollView, StatusBar, View } from 'react-native'
+import { ActivityIndicator, Image, ImageBackground, ScrollView, StatusBar, View } from 'react-native'
 import React from 'react'
 import { Screen } from '../../components/screen/Screen'
 import { Text } from '../../components/text/Text'
@@ -15,6 +15,11 @@ import { UseLogin } from './UseLogin'
 const LogIn = ({ navigation }) => {
   const [{
     values,
+    loading,
+    remeber,
+    err,
+    setErr,
+    setRemember,
     handleChange,
     loginHandler,
   }] = UseLogin()
@@ -32,6 +37,13 @@ const LogIn = ({ navigation }) => {
         >
           <View style={styles.loginBox}>
             <Image source={LOGO} resizeMode='cover' style={styles.logo} />
+            
+            {err && <View style={styles.errView}>
+              <Text color='error' size={12} weight={'regular'} >Email or Password is Invalid!</Text>
+              <Touchable onPress={()=> setErr(false)}>
+                <Icon name="close" size={16} color="#495057" />
+              </Touchable>
+            </View>}
             <View style={{ alignItems: 'flex-start', width: '100%' }}>
               <Text color='primary' size={16} weight={'bold'} >Login To Your Account</Text>
               <TextInput
@@ -52,6 +64,7 @@ const LogIn = ({ navigation }) => {
                   <Icon name="envelope" size={22} color="#495057" />
                 }
               />
+              {values.inputErr !== "" && (values.inputId === 1 || values.inputId === 3) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
               <TextInput
                 placeholder="***********"
                 placeholderTextColor={theme.colors.lightGrey}
@@ -73,15 +86,21 @@ const LogIn = ({ navigation }) => {
                   <Icon name="lock" size={26} color="#495057" />
                 }
               />
+              {values.inputErr !== "" && (values.inputId === 2) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
               <View style={styles.forgotPass}>
-                <CustomCheckbox label={'Remember'}/>
+                <CustomCheckbox check={remeber} setCheck={setRemember} label={'Remember'} />
                 <Touchable>
                   <Text size={15} weight={'medium'} color="lightGrey">Forgot Password?</Text>
                 </Touchable>
               </View>
             </View>
             <Touchable style={styles.loginBtn} onPress={() => loginHandler()}>
-              <Text style={styles.loginBtnText}>Login</Text>
+              {
+                loading ?
+                  <ActivityIndicator size="small" color="#fff" />
+                  :
+                  <Text style={styles.loginBtnText}>Login</Text>
+                }
             </Touchable>
 
             <Text color='primary' size={16} weight='medium' style={styles.orText}>OR</Text>

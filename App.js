@@ -7,6 +7,12 @@ import Store from './src/config/Store';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './src/navigation/authStack/AuthStack';
 import Navigation from './src/navigation/Navigation';
+import {LogBox} from "react-native";
+
+LogBox.ignoreLogs([
+"ViewPropTypes will be removed",
+"ColorPropType will be removed",
+])
 
 const App = () => {
   return (

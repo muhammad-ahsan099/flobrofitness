@@ -1,30 +1,38 @@
-import { View, ScrollView, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import Slider from "react-native-slider";
 import { Text } from '../../components/text/Text';
 import React, { useState } from 'react'
 import { Styles } from "./UserDetailStyle";
-import { COLORS } from "../../assests/colors/Colors";
-import { USER_FIELDS_DATA } from "../../constant/CustomData/CustomData";
 import { theme } from '../../theming';
 import { TextInput } from '../../components/textInput/TextInput';
 import { Touchable } from '../../components/Touchable/Touchable';
 import { Screen } from '../../components/screen/Screen';
 import UseUserDetail from './UseUserDetail'
-import AppBar from '../../components/appBar/AppBar';
+import CompanyProfile from '../../components/appBar/CompanyProfile';
+import CountryPicker from 'react-native-country-picker-modal';
 
 const UserDetail = () => {
     // Custom Hook
     const {
         inputs,
+        loading,
         onChangeHandler,
         gender,
         bodyName,
         genderPress,
         bodyType,
         radioPress,
-        addUserHandler,
+        addUserDetailHandler,
+        selectedCountry,
+        setSelectedCountry
     } = UseUserDetail()
 
+    const feet = Math.floor(inputs.height / 12);
+    const inches = inputs.height % 12;
+
+    const [show, setShow] = useState(false)
+
+    console.log("Selected Country: ", selectedCountry);
     const BodyTypeButton = ({ bodyType, radioPress }) => {
         return (
             <TouchableOpacity onPress={radioPress}>
@@ -58,7 +66,7 @@ const UserDetail = () => {
                 safeArea
                 contentContainerStyle={Styles.screen}
             >
-                <AppBar />
+                <CompanyProfile cardId={2} />
                 <View style={Styles.mainContainer}>
                     <View>
                         <Text color='primary' size={16} weight={'medium'} >
@@ -97,8 +105,8 @@ const UserDetail = () => {
                             </Text>
                             <View style={Styles.rangesDiv}>
                                 <Slider
-                                    maximumValue={90}
-                                    minimumValue={0}
+                                    maximumValue={96}
+                                    minimumValue={13}
                                     step={1}
                                     maximumTrackTintColor={'gray'}
                                     minimumTrackTintColor={theme.colors.primary}
@@ -106,7 +114,6 @@ const UserDetail = () => {
                                     trackStyle={{ height: 3 }}
                                     value={inputs.age}
                                     onValueChange={onChangeHandler('age')}
-
                                 />
                             </View>
                         </View>
@@ -118,12 +125,12 @@ const UserDetail = () => {
                         </Text>
                         <View style={Styles.genderDiv}>
                             <Text style={Styles.genderHeadingTxt}>
-                                {`My Height Is: 3 Feet 0 Inches`}
+                                {`My Height Is: ${feet} Feet ${inches} Inches`}
                             </Text>
                             <View style={Styles.rangesDiv}>
                                 <Slider
-                                    maximumValue={90}
-                                    minimumValue={0}
+                                    maximumValue={93}
+                                    minimumValue={36}
                                     step={1}
                                     maximumTrackTintColor={'gray'}
                                     minimumTrackTintColor={theme.colors.primary}
@@ -131,7 +138,6 @@ const UserDetail = () => {
                                     trackStyle={{ height: 3 }}
                                     value={inputs.height}
                                     onValueChange={onChangeHandler('height')}
-
                                 />
                             </View>
                         </View>
@@ -148,7 +154,7 @@ const UserDetail = () => {
                             <View style={Styles.rangesDiv}>
                                 <Slider
                                     maximumValue={400}
-                                    minimumValue={0}
+                                    minimumValue={30}
                                     step={1}
                                     maximumTrackTintColor={'gray'}
                                     minimumTrackTintColor={theme.colors.primary}
@@ -174,6 +180,7 @@ const UserDetail = () => {
                                 {
                                     bodyType.map((item, index) => (
                                         <BodyTypeButton
+                                            key={index}
                                             bodyType={item}
                                             radioPress={() =>
                                                 radioPress(item.title, index)
@@ -189,8 +196,9 @@ const UserDetail = () => {
                         <Text color='lightGrey' size={16} weight={'medium'} >
                             Country
                         </Text>
-                        <TextInput
-                            placeholder="Pakistan"
+                        <Touchable onPress={()=> setShow(true)}>
+                        {/* <TextInput
+                            placeholder="country"
                             placeholderTextColor={theme.colors.lightGrey}
                             autoCapitalize="none"
                             autoCorrect={true}
@@ -200,15 +208,31 @@ const UserDetail = () => {
                             ]}
                             returnKeyType="next"
                             value={inputs?.country}
-                            onChangeText={text => onChangeHandler(text, 'country')}
+                            onChangeText={onChangeHandler('country')}
+                        /> */}
+                        <CountryPicker
+                            withFlag={true}
+                            withCallingCode={true}
+                            onSelect={(country) => {
+                                console.log("Country Data: ", country);
+                                setSelectedCountry({name: country?.name, flag: country?.flag, code: country?.callingCode[0]})
+                            }
+                        }
+                            visible={show}
+                            containerButtonStyle={Styles.countryInput}
+                            placeholder={selectedCountry?.name}
+                            withCountryNameButton={true}
+                            placeholderTextColor={theme.colors.lightGrey}
+                            withFilter={true}
                         />
+                         </Touchable>
                     </View>
                     <View>
                         <Text color='lightGrey' size={16} weight={'medium'} >
                             City
                         </Text>
                         <TextInput
-                            placeholder="Faisalabad"
+                            placeholder="city"
                             placeholderTextColor={theme.colors.lightGrey}
                             autoCapitalize="none"
                             autoCorrect={true}
@@ -218,7 +242,7 @@ const UserDetail = () => {
                             ]}
                             returnKeyType="next"
                             value={inputs?.city}
-                            onChangeText={text => onChangeHandler(text, 'city')}
+                            onChangeText={onChangeHandler('city')}
                         />
                     </View>
                     <View>
@@ -237,7 +261,7 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="numeric"
                             value={inputs?.zipCode}
-                            onChangeText={text => onChangeHandler(text, 'zipCode')}
+                            onChangeText={onChangeHandler('zipCode')}
                         />
                     </View>
                     <View>
@@ -256,7 +280,7 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="default"
                             value={inputs?.address}
-                            onChangeText={text => onChangeHandler(text, 'address')}
+                            onChangeText={onChangeHandler('address')}
                         />
                     </View>
                     <View>
@@ -274,13 +298,20 @@ const UserDetail = () => {
                             returnKeyType="next"
                             keyboardType="default"
                             value={inputs?.additionalInfo}
-                            onChangeText={text => onChangeHandler(text, 'additionalInfo')}
+                            onChangeText={onChangeHandler('additionalInfo')}
                         />
                     </View>
                     <View style={Styles.continueBtn}>
-                        <Touchable style={Styles.saveBtn} onPress={addUserHandler}>
-                            <Text size={16} weight={'medium'} color="white">Save</Text>
-                        </Touchable>
+                        {
+                            loading ?
+                                <Touchable style={[Styles.saveBtn]}>
+                                    <Text size={15} weight={'regular'} color="white">{<ActivityIndicator size={'small'} color={'#fff'} />}</Text>
+                                </Touchable>
+                                :
+                                <Touchable style={[Styles.saveBtn]} onPress={() => addUserDetailHandler()}>
+                                    <Text size={16} weight={'medium'} color="white">{'Save'}</Text>
+                                </Touchable>
+                        }
                     </View>
                 </View>
             </Screen>

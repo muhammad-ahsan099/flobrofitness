@@ -1,1 +1,1 @@
-export const endPoint = 'https://sun-shine123.herokuapp.com/';
+export const endPoint = 'http://fcoll242-001-site2.etempurl.com/api/Account/';

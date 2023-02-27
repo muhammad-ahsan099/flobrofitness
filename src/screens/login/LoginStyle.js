@@ -28,6 +28,19 @@ export const styles = StyleSheet.create({
         paddingTop: 40,
         paddingBottom: 40
     },
+    errView:{
+        alignItems: 'center',
+        backgroundColor: '#f8d7da',
+        borderWidth: 1,
+        borderColor: '#f8d7da',
+        borderRadius: 4,
+        width: '100%',
+        justifyContent: 'space-between',
+        textAlign: 'left',
+        flexDirection: 'row',
+        padding: 8,
+        marginBottom: 10
+    },
     textInput: {
         alignItems: 'center',
         height: 45,

@@ -4,9 +4,7 @@ import CheckBox from '@react-native-community/checkbox';
 import { theme } from '../../theming';
 import { Text } from '../text/Text';
 
-export default function CustomCheckbox({ label }) {
-    const [checkbox, setCheckbox] = useState(false);
-
+export default function CustomCheckbox({ label, check , setCheck }) {
     return (
         <View style={styles.container}>
             <View style={styles.checkboxContainer}>
@@ -19,8 +17,8 @@ export default function CustomCheckbox({ label }) {
                     onCheckColor={theme.colors.primary}
                     lineWidth={2}
                     style={styles.checkbox}
-                    value={checkbox}
-                    onValueChange={() => setCheckbox(!checkbox)}
+                    value={check}
+                    onValueChange={() => setCheck(!check)}
                 />
             </View>
             <Text color='lightPrimary' size={15} weight={'normal'}>{label}</Text>

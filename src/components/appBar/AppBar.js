@@ -1,22 +1,50 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View,Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import { Styles } from "./AppBarStyle";
 import { LOGO } from "../../constant/Icons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { Menu, MenuItem } from 'react-native-material-menu';
+import { useDispatch, useSelector } from 'react-redux';
+import { doLogout } from '../../redux/actions/AuthActions';
+import { Text } from '../text/Text';
 
 const AppBar = () => {
+  const dispatch = useDispatch()
+
+  const [visible, setVisible] = useState(false);
+  const hideMenu = () => setVisible(false);
+  const showMenu = () => {
+    setVisible(true)
+  };
+  const logoutHandler = ()=> {
+    hideMenu()
+    setTimeout(()=> {
+      dispatch(doLogout())
+    }, 500)
+  }
+  console.log("Visible: ", visible);
+
+  const userData = useSelector(state => state.AuthReducer.userData)
+
   return (
     <View style={Styles.container}>
       <View>
         <Image source={LOGO} style={Styles.navLogo} />
       </View>
-      <View style={Styles.peofileDiv}>
-        {/* <Image source={LOGO} style={Styles.sideLogo} /> */}
-        <TouchableOpacity>
-          <Text style={Styles.profileTxt}>Test</Text>
-        </TouchableOpacity>
-        <AntDesign name='caretdown' size={8} color={'#000000'} />
-      </View>
+      <Menu
+        visible={visible}
+        animationDuration={100}
+        anchor={
+            <TouchableOpacity style={Styles.peofileDiv} onPress={()=> showMenu()}>
+              <Text style={Styles.profileTxt}>{userData ? userData?.FirstName : "Test"}</Text>
+              <AntDesign name='caretdown' size={8} color={'#000000'} />
+            </TouchableOpacity>
+        }
+        onRequestClose={hideMenu}
+        style={Styles.peofileDiv}
+      >
+        <MenuItem onPress={()=> logoutHandler()}><AntDesign name='logout' size={16} color={'#000000'} /> <Text color={'black'} > Logout</Text></MenuItem>
+      </Menu>
     </View>
   )
 }
