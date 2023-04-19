@@ -1,6 +1,4 @@
 export const SETUP_CUSTOM_DATA = {
-    mainHeading: 'Setup Your Account',
-    secondHeading: '"THE FASTEST WAY TO REACH YOUR FITNESS GOAL GUARANTEED!"',
     mainContent: {
         mainContentHeading: `Let's Get Started!`,
         mainQuestion: 'What you can expect from us as a new FloBro Fitness Athlete.',
@@ -18,25 +16,25 @@ export const SETUP_CUSTOM_DATA = {
     },
     cards: [
         {
-            id: '1',
+            id: 1,
             icon: 'handshake-o',
             text: 'TERMS AGGREMENT',
             cardStatus: true,
         },
         {
-            id: '2',
+            id: 2,
             icon: 'user-circle',
             text: 'PERSONAL DETAIL',
             cardStatus: false,
         },
         {
-            id: '3',
+            id: 3,
             icon: 'vcard',
             text: 'MEMBERSHIP',
             cardStatus: false,
         },
         {
-            id: '4',
+            id: 4,
             icon: 'credit-card',
             text: 'PAYMENT',
             cardStatus: false,
@@ -78,3 +76,77 @@ export const USER_FIELDS_DATA = {
         },
     }
 }
+
+
+export const SubscriptionData = [
+    {
+        title: 'BASIC FREE',
+        memberShipId: 1,
+        payment: 0,
+        detail: {
+            one: 'On Paid Basis',
+            two: 'Unlimited After First Program',
+            three: 'Unlimited Ticket Limited Chat Call(on paid Basis) Video Call(on paid Basis)',
+            four: 'None',
+            five: 'None',
+            six: 'None',
+            seven: 'None',
+        }
+    },
+    {
+        title: 'PREMIUM BRONZE',
+        memberShipId: 2,
+        payment: 95,
+        detail: {
+            one: '1 Credit',
+            two: 'Unlimited',
+            three: 'Unlimited Ticket Unlimited Chat Call (on paid Basis) Video Call (on paid Basis)',
+            four: '10% OFF',
+            five: '10% per Referral',
+            six: 'On Paid Basis',
+            seven: 'Up to 10% OFF Monthly Subscription',
+        }
+    },
+    {
+        title: 'PREMIUM SILVER',
+        memberShipId: 3,
+        payment: 150,
+        detail: {
+            one: 'On Paid Basis	',
+            two: 'Unlimited After First Program',
+            three: 'Unlimited Ticket Limited Chat Call(on paid Basis) Video Call(on paid Basis)',
+            four: 'None',
+            five: 'None',
+            six: 'None',
+            seven: 'None',
+        }
+    },
+    {
+        title: 'PREMIUM GOLD',
+        memberShipId: 4,
+        payment: 250,
+        detail: {
+            one: 'On Paid Basis	',
+            two: 'Unlimited After First Program',
+            three: 'Unlimited Ticket Limited Chat Call(on paid Basis) Video Call(on paid Basis)',
+            four: 'None',
+            five: 'None',
+            six: 'None',
+            seven: 'None',
+        }
+    },
+    {
+        title: 'PREMIUM PLATINUM',
+        memberShipId: 5,
+        payment: 495,
+        detail: {
+            one: 'On Paid Basis	',
+            two: 'Unlimited After First Program',
+            three: 'Unlimited Ticket Limited Chat Call(on paid Basis) Video Call(on paid Basis)',
+            four: 'None',
+            five: 'None',
+            six: 'None',
+            seven: 'None',
+        }
+    },
+]

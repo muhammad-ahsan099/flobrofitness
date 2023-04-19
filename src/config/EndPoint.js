@@ -1,1 +1,3 @@
-export const endPoint = 'https://sun-shine123.herokuapp.com/';
+import config from "./config";
+
+export const endPoint = config.API_URL

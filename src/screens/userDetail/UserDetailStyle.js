@@ -47,12 +47,11 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingBottom: 4,
     },
     femaleBtnTxt: {
         color: COLORS.white,
         fontSize: 14,
-        fontWeight: '500'
+        fontWeight: '500',
     },
     maleBtn: {
         backgroundColor: COLORS.white,
@@ -62,12 +61,11 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingBottom: 4,
     },
     maleBtnTxt: {
         color: COLORS.black,
         fontSize: 14,
-        fontWeight: '600'
+        fontWeight: '500',
     },
     rangesDiv: {
         width: '80%',
@@ -86,11 +84,10 @@ export const Styles = StyleSheet.create({
     bodyBtn: {
         backgroundColor: COLORS.blue,
         height: 40,
-        paddingHorizontal: 12,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: 4,
         marginHorizontal: 2,
         borderRadius: 3,
         borderColor: theme.colors.primary,
@@ -99,16 +96,15 @@ export const Styles = StyleSheet.create({
     bodyBtnTxt: {
         color: COLORS.white,
         fontSize: 14,
-        fontWeight: '500'
+        fontWeight: '500',
     },
     singleBodyBtn: {
         backgroundColor: COLORS.white,
         height: 40,
-        paddingHorizontal: 12,
+        paddingHorizontal: 10,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: 4,
         borderColor: theme.colors.primary,
         borderWidth: 2,
         marginHorizontal: 2,
@@ -117,7 +113,7 @@ export const Styles = StyleSheet.create({
     singleBodyBtnTxt: {
         borderColor: theme.colors.primary,
         fontSize: 14,
-        fontWeight: '600'
+        fontWeight: '500',
     },
     input: {
         height: 40,
@@ -139,7 +135,20 @@ export const Styles = StyleSheet.create({
     textInputText: {
         fontSize: 14,
         fontWeight: '400',
-        color: '#131e22'
+        color: '#131e22',
+    },
+    countryInput: {
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        height: 40,
+        paddingHorizontal: 10,
+        borderRadius: 0,
+        borderWidth: 1,
+        borderColor: theme.colors.borderColor,
+        marginVertical: 10,
+        marginTop: 10,
+        marginHorizontal: 6,
+        color: theme.colors.lightGrey
     },
     inputLarge: {
         height: 150,
@@ -149,6 +158,7 @@ export const Styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: theme.colors.borderColor,
+        textAlignVertical: 'top'
     },
     continueBtn: {
         width: '100%',
@@ -156,7 +166,7 @@ export const Styles = StyleSheet.create({
         marginVertical: 12,
     },
     saveBtn: {
-        paddingHorizontal: 20,
+        width: 90,
         backgroundColor: theme.colors.primary,
         height: 40,
         borderRadius: 3,
@@ -165,5 +175,31 @@ export const Styles = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         borderColor: theme.colors.primary,
-    }
+    },
+    mainContainerTop: {
+        flex: 2,
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: COLORS.blue,
+        paddingTop: 30,
+        paddingBottom: 20,
+    },
+    logoImgStyle: {
+        height: 180,
+        width: 150,
+    },
+    mainHeading: {
+        fontSize: 28,
+        color: COLORS.white,
+        fontWeight: '700',
+        textAlign: 'center',
+        marginBottom: 5
+    },
+    secHeading: {
+        fontSize: 12,
+        color: COLORS.white,
+        textAlign: 'center',
+        fontWeight: '500',
+        marginBottom: 5
+    },
 })

@@ -17,6 +17,19 @@ export const styles = StyleSheet.create({
         width: 182,
         marginBottom: 20
     },
+    emailSendView:{
+        alignItems: 'center',
+        backgroundColor: 'rgba(171, 235, 188, 0.5)',
+        borderWidth: 1,
+        borderColor: 'rgba(171, 235, 188, 0.5)',
+        borderRadius: 4,
+        width: '100%',
+        justifyContent: 'space-between',
+        textAlign: 'left',
+        flexDirection: 'row',
+        padding: 8,
+        marginBottom: 10
+    },
     loginBox: {
         backgroundColor: '#fff',
         marginHorizontal: 16, 

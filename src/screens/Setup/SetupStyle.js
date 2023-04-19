@@ -17,7 +17,7 @@ export const Styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: COLORS.blue,
         paddingTop: 30,
-        paddingBottom: 4,
+        paddingBottom: 20,
     },
     logoImgStyle: {
         height: 180,
@@ -85,7 +85,7 @@ export const Styles = StyleSheet.create({
     },
     mainContentTxt: {
         color: COLORS.black,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: '700',
         marginVertical: 5,
         textAlign: 'center'
@@ -106,8 +106,8 @@ export const Styles = StyleSheet.create({
     },
     mainPointsHeadings: {
         color: COLORS.black,
-        fontSize: 18,
-        fontWeight: '800',
+        fontSize: 16,
+        fontWeight: '700',
         marginLeft: 12,
         marginTop: 13
     },
@@ -151,7 +151,7 @@ export const Styles = StyleSheet.create({
         marginVertical: 12,
     },
     saveBtn: {
-        paddingHorizontal: 20,
+        width: 110,
         backgroundColor: theme.colors.primary,
         height: 40,
         borderRadius: 3,

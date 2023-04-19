@@ -1,4 +1,4 @@
-import { Image, ImageBackground, ScrollView, StatusBar, View } from 'react-native'
+import { ActivityIndicator, Image, ImageBackground, ScrollView, StatusBar, View } from 'react-native'
 import React from 'react'
 import { Screen } from '../../components/screen/Screen'
 import { Text } from '../../components/text/Text'
@@ -10,10 +10,15 @@ import { theme } from '../../theming'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { UseSignup } from './UseSignup'
 
-const Signup = ({navigation}) => {
+const Signup = ({ navigation }) => {
   const [{
+    loading,
     values,
-    handleChange
+    success,
+    setSuccess,
+    handleChange,
+    generateUserId,
+    signupHandler,
   }] = UseSignup()
   return (
     <View style={styles.container}>
@@ -23,12 +28,23 @@ const Signup = ({navigation}) => {
         barStyle={'light-content'}
       />
       <ImageBackground source={SIGNUP_BG} resizeMode="cover" style={styles.image}>
-        <View
-          style={styles.container}
+        <Screen
+          keyboardVerticalOffset={0}
         >
-          <ScrollView contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}} showsVerticalScrollIndicator={false}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps='handled'>
             <View style={styles.loginBox}>
               <Image source={LOGO} resizeMode='cover' style={styles.logo} />
+
+              {
+                success &&
+                <View style={styles.emailSendView}>
+                  <Text color='success' size={12} weight={'regular'} >A verification link has been sent to the registered email.</Text>
+                  <Touchable onPress={() => setSuccess(false)}>
+                    <Icon name="close" size={16} color="#495057" />
+                  </Touchable>
+                </View>
+              }
+
               <View style={{ alignItems: 'flex-start', width: '100%' }}>
                 <Text color='primary' size={16} weight={'bold'} >Create a FREE Account Today!</Text>
                 <TextInput
@@ -41,14 +57,15 @@ const Signup = ({navigation}) => {
                     styles.textInputText,
                   ]}
                   textContentType="username"
-                  autoComplete="email"
                   returnKeyType="next"
                   after={
                     <Icon name="user" size={26} color="#495057" />
                   }
-                  value={values.firstName} 
+                  value={values.firstName}
                   onChangeText={handleChange('firstName')}
+                // onBlur={() => generateUserId()}
                 />
+                {values.inputErr !== "" && (values.inputId === 1) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
                 <TextInput
                   placeholder="Last Name"
                   placeholderTextColor={theme.colors.lightGrey}
@@ -59,20 +76,25 @@ const Signup = ({navigation}) => {
                     styles.textInputText,
                   ]}
                   textContentType="username"
-                  autoComplete="email"
                   returnKeyType="next"
                   after={
                     <Icon name="user" size={26} color="#495057" />
                   }
-                  value={values.lastName} 
+                  value={values.lastName}
                   onChangeText={handleChange('lastName')}
+                  onBlur={() => {
+                    if (values.firstName && values.lastName)
+                      generateUserId()
+                  }}
                 />
+                {values.inputErr !== "" && (values.inputId === 2) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
                 <TextInput
+                  editable={false}
                   placeholder="User ID"
                   placeholderTextColor={theme.colors.lightGrey}
                   autoCapitalize="none"
                   autoCorrect={false}
-                  containerStyle={styles.textInput}
+                  containerStyle={[styles.textInput, { backgroundColor: '#e9ecef' }]}
                   style={[
                     styles.textInputText,
                   ]}
@@ -81,8 +103,7 @@ const Signup = ({navigation}) => {
                   after={
                     <Icon name="user" size={26} color="#495057" />
                   }
-                  value={values.userId} 
-                  onChangeText={handleChange('userId')}
+                  value={values.userId}
                 />
                 <TextInput
                   placeholder="Email"
@@ -99,9 +120,10 @@ const Signup = ({navigation}) => {
                   after={
                     <Icon name="envelope" size={22} color="#495057" />
                   }
-                  value={values.email} 
+                  value={values.email}
                   onChangeText={handleChange('email')}
                 />
+                {values.inputErr !== "" && (values.inputId === 3 || values.inputId === 4) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
                 <TextInput
                   placeholder="***********"
                   placeholderTextColor={theme.colors.lightGrey}
@@ -120,22 +142,28 @@ const Signup = ({navigation}) => {
                   after={
                     <Icon name="lock" size={26} color="#495057" />
                   }
-                  value={values.password} 
+                  value={values.password}
                   onChangeText={handleChange('password')}
                 />
+                {values.inputErr !== "" && (values.inputId === 5) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
               </View>
-              <Touchable style={styles.registerBtn}>
-                <Text style={styles.registerBtnText}>Register</Text>
+              <Touchable style={styles.registerBtn} onPress={() => signupHandler()}>
+                {
+                  loading ?
+                    <ActivityIndicator size="small" color="#fff" />
+                    :
+                    <Text style={styles.registerBtnText}>Register</Text>
+                }
               </Touchable>
 
               <Text color='primary' size={16} weight='medium' style={styles.orText}>OR</Text>
 
-              <Touchable style={styles.loginBtn} onPress={()=> navigation.navigate('login')}>
+              <Touchable style={styles.loginBtn} onPress={() => navigation.navigate('login')}>
                 <Text style={styles.loginBtnText}>Login</Text>
               </Touchable>
             </View>
           </ScrollView>
-        </View>
+        </Screen>
       </ImageBackground>
     </View>
   )

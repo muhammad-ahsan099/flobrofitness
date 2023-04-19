@@ -20,8 +20,10 @@ export const theme = {
     secondary: '#337ab7',
     action: palette.brandColorsVoxoMobileRed,
     danger: palette.uiColorsUiDanger,
+    error: '#dc3545',
     success: palette.uiColorsUiSuccess,
     white: '#ffffff',
+    black: '#000000',
     grey: 'grey',
     lightGrey: '#555',
     borderColor: '#d4d4d4',
@@ -40,6 +42,17 @@ export const theme = {
     medium: '600',
     semiBold: '700',
     bold: '900'
+  },
+  fontFamily: {
+    InterBlack: `Inter-Black`,
+    InterBold: `Inter-Bold`,
+    InterExtraBold: `Inter-ExtraBold`,
+    InterExtraLight: `Inter-ExtraLight`,
+    InterLight: `Inter-Light`,
+    InterMedium: `Inter-Medium`,
+    InterRegular: `Inter-Regular`,
+    InterSemiBold: `Inter-SemiBold`,
+    InterThin: `Inter-Thin`,
   },
   animation: {
     scale: 1.0,
