@@ -7,8 +7,8 @@ export const UseLogin = () => {
   const [loading, setLoading] = useState(false)
   const [remeber, setRemember] = useState(false)
   const [values, setValues] = useState({
-    email: "taseries260@gmail.com",
-    password: "taseries.456",
+    email: "",
+    password: "",
     inputErr: "",
     inputId: 0,
   });

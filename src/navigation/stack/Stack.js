@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserProfile } from '../../redux/actions/AuthActions';
 import { useState } from 'react';
 import Dashboard from '../../screens/dashboard/Dashboard';
+import { MainTabNavigator } from '../bottomNavigation/BottomTabs';
+import CardInfo from '../../screens/subscription/CardInfo';
 
 
 // StackContainer
@@ -17,18 +19,17 @@ function StackContainer() {
   const userId = useSelector(state => state.AuthReducer.userId)
   const user = useSelector(state => state.AuthReducer.userData)
   const isUserLoggedIn = useSelector(state => state.AuthReducer.isUserLoggedIn)
-  // console.log(isUserLoggedIn, "User data Navigation: ",  user);
   const dispatch = useDispatch();
 
   const termsScreen = user?.IsAcceptTerms
   const detailScreen = user?.IsSetPersoanlDetail
   const profileScreen = user?.IsProfileSetUp
+  const dashboard = user?.IsProfileSetUp && user.MembershipId !== null
 
   let initialRoute = null;
     if (!loading && user !== null) {
-      initialRoute = !termsScreen ? 'Setup' : !detailScreen ? 'UserDetail' : !profileScreen ? 'Subscription' : 'Dashboard'
+      initialRoute = dashboard ? 'BottomTabs' : !termsScreen ? 'Setup' : !detailScreen ? 'UserDetail' : !profileScreen ? 'Subscription' : 'BottomTabs'
     }
-console.log("initia Rote: ", initialRoute);
 
   // const route = 
   const options = {
@@ -40,7 +41,18 @@ console.log("initia Rote: ", initialRoute);
   };
 
   return (
-    <AppStack.Navigator initialRouteName={'Setup'}>
+    <AppStack.Navigator screenOptions={{headerShown: false}} initialRouteName={initialRoute}>
+       
+       <AppStack.Screen
+        name="BottomTabs"
+        component={MainTabNavigator}
+        options={{
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
+          headerShown: false,
+        }}
+      />
+
       <AppStack.Screen
         name="Setup"
         component={Setup}
@@ -62,11 +74,10 @@ console.log("initia Rote: ", initialRoute);
         options={options}
       />
       <AppStack.Screen
-        name="Dashboard"
-        component={Dashboard}
+        name="CardInfo"
+        component={CardInfo}
         options={options}
       />
-
     </AppStack.Navigator>
   );
 }

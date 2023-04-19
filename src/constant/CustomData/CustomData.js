@@ -81,6 +81,7 @@ export const USER_FIELDS_DATA = {
 export const SubscriptionData = [
     {
         title: 'BASIC FREE',
+        memberShipId: 1,
         payment: 0,
         detail: {
             one: 'On Paid Basis',
@@ -94,6 +95,7 @@ export const SubscriptionData = [
     },
     {
         title: 'PREMIUM BRONZE',
+        memberShipId: 2,
         payment: 95,
         detail: {
             one: '1 Credit',
@@ -107,6 +109,7 @@ export const SubscriptionData = [
     },
     {
         title: 'PREMIUM SILVER',
+        memberShipId: 3,
         payment: 150,
         detail: {
             one: 'On Paid Basis	',
@@ -120,6 +123,7 @@ export const SubscriptionData = [
     },
     {
         title: 'PREMIUM GOLD',
+        memberShipId: 4,
         payment: 250,
         detail: {
             one: 'On Paid Basis	',
@@ -133,6 +137,7 @@ export const SubscriptionData = [
     },
     {
         title: 'PREMIUM PLATINUM',
+        memberShipId: 5,
         payment: 495,
         detail: {
             one: 'On Paid Basis	',

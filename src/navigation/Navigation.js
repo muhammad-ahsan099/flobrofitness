@@ -6,6 +6,7 @@ import StackContainer from './stack/Stack';
 import { doGetLoggedInUser, getUserProfile } from '../redux/actions/AuthActions';
 import { useState } from 'react';
 import Loader from '../screens/loader/Loader';
+import DrawerNavigation from './drawerNavigation/DrawerNavigation';
 const AppStackNavigator = createNativeStackNavigator();
 
 
@@ -41,8 +42,8 @@ export default function Navigation() {
                     :
                     isUserLoggedIn ? (
                         <AppStackNavigator.Screen
-                            name="StackContainer"
-                            component={StackContainer}
+                            name="DrawerNavigation"
+                            component={DrawerNavigation}
                             options={options}
                         />
                     ) : (
@@ -51,7 +52,6 @@ export default function Navigation() {
                             component={AuthStack}
                             options={options}
                         />
-
                     )
             }
 

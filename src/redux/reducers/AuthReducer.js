@@ -1,14 +1,17 @@
-import { LOGIN ,LOGOUT, ACTIVE_USER, USER_ID} from '../types/Types';
+import { LOGIN, REGISTER ,LOGOUT, ACTIVE_USER, USER_ID, USER_REWARD} from '../types/Types';
 const initialState = {
     isUserLoggedIn: false,
     userData: null,
-    userId: null
+    userId: null,
+    promoReward: {
+        discount: 0,
+        reawardpoint: 0,
+    }
 };
 
 const AuthReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN: {
-            // console.log('Payload: ', action.payload);
             return {
                 ...state,
                 userData: action.payload,
@@ -16,7 +19,6 @@ const AuthReducer = (state = initialState, action) => {
             }
         }
         case ACTIVE_USER: {
-            console.log("Payload: ", typeof action.payload);
             return {
                 ...state,
                 userData: action.payload
@@ -27,6 +29,18 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 isUserLoggedIn: true,
                 userId: action.payload,
+            }
+        }
+        case REGISTER: {
+            return {
+                ...state,
+                userId: action.payload,
+            }
+        }
+        case USER_REWARD: {
+            return {
+                ...state,
+                promoReward: action.payload,
             }
         }
         case LOGOUT: {

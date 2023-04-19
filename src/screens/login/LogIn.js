@@ -31,85 +31,93 @@ const LogIn = ({ navigation }) => {
         barStyle={'light-content'}
       />
       <ImageBackground source={LOGIN_BG} resizeMode="cover" style={styles.image}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.screen}
+        <Screen
+          keyboardVerticalOffset={0}
         >
-          <View style={styles.loginBox}>
-            <Image source={LOGO} resizeMode='cover' style={styles.logo} />
-            
-            {err && <View style={styles.errView}>
-              <Text color='error' size={12} weight={'regular'} >Email or Password is Invalid!</Text>
-              <Touchable onPress={()=> setErr(false)}>
-                <Icon name="close" size={16} color="#495057" />
-              </Touchable>
-            </View>}
-            <View style={{ alignItems: 'flex-start', width: '100%' }}>
-              <Text color='primary' size={16} weight={'bold'} >Login To Your Account</Text>
-              <TextInput
-                placeholder="Email Or User ID"
-                placeholderTextColor={theme.colors.lightGrey}
-                autoCapitalize="none"
-                autoCorrect={false}
-                value={values.email}
-                onChangeText={handleChange('email')}
-                containerStyle={styles.textInput}
-                style={[
-                  styles.textInputText,
-                ]}
-                textContentType="username"
-                autoComplete="email"
-                returnKeyType="next"
-                after={
-                  <Icon name="envelope" size={22} color="#495057" />
-                }
-              />
-              {values.inputErr !== "" && (values.inputId === 1 || values.inputId === 3) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
-              <TextInput
-                placeholder="***********"
-                placeholderTextColor={theme.colors.lightGrey}
-                autoCapitalize="none"
-                autoCorrect={false}
-                secureTextEntry={true}
-                value={values.password}
-                onChangeText={handleChange('password')}
-                containerStyle={styles.textInput}
-                style={[
-                  styles.textInputText,
-                ]}
-                textContentType="password"
-                autoComplete="password"
-                returnKeyType="done"
-                returnKeyLabel="Login"
-                enablesReturnKeyAutomatically={true}
-                after={
-                  <Icon name="lock" size={26} color="#495057" />
-                }
-              />
-              {values.inputErr !== "" && (values.inputId === 2) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
-              <View style={styles.forgotPass}>
-                <CustomCheckbox check={remeber} setCheck={setRemember} label={'Remember'} />
-                <Touchable>
-                  <Text size={15} weight={'medium'} color="lightGrey">Forgot Password?</Text>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.screen}
+            keyboardShouldPersistTaps='handled'
+          >
+            <View style={styles.loginBox}>
+              <Image source={LOGO} resizeMode='cover' style={styles.logo} />
+
+              {err && <View style={styles.errView}>
+                <Text color='error' size={12} weight={'regular'} >Email or Password is Invalid!</Text>
+                <Touchable onPress={() => setErr(false)}>
+                  <Icon name="close" size={16} color="#495057" />
                 </Touchable>
+              </View>}
+              <View style={{ alignItems: 'flex-start', width: '100%' }}>
+                <Text color='primary' size={16} weight={'bold'} >Login To Your Account</Text>
+                <TextInput
+                  placeholder="Email Or User ID"
+                  placeholderTextColor={theme.colors.lightGrey}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  value={values.email}
+                  onChangeText={handleChange('email')}
+                  containerStyle={styles.textInput}
+                  style={[
+                    styles.textInputText,
+                  ]}
+                  textContentType="username"
+                  autoComplete="email"
+                  returnKeyType="next"
+                  after={
+                    <Icon name="envelope" size={22} color="#495057" />
+                  }
+                />
+                {values.inputErr !== "" && (values.inputId === 1 || values.inputId === 3) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
+                <TextInput
+                  placeholder="***********"
+                  placeholderTextColor={theme.colors.lightGrey}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  secureTextEntry={true}
+                  value={values.password}
+                  onChangeText={handleChange('password')}
+                  containerStyle={styles.textInput}
+                  style={[
+                    styles.textInputText,
+                  ]}
+                  textContentType="password"
+                  autoComplete="password"
+                  returnKeyType="done"
+                  returnKeyLabel="Login"
+                  enablesReturnKeyAutomatically={true}
+                  after={
+                    <Icon name="lock" size={26} color="#495057" />
+                  }
+                />
+                {values.inputErr !== "" && (values.inputId === 2) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
+                <View style={styles.forgotPass}>
+                  <CustomCheckbox check={remeber} setCheck={setRemember} label={'Remember'} />
+                  <Touchable>
+                    <Text size={15} weight={'medium'} color="lightGrey">Forgot Password?</Text>
+                  </Touchable>
+                </View>
               </View>
-            </View>
-            <Touchable style={styles.loginBtn} onPress={() => loginHandler()}>
-              {
-                loading ?
-                  <ActivityIndicator size="small" color="#fff" />
-                  :
-                  <Text style={styles.loginBtnText}>Login</Text>
+              <Touchable style={styles.loginBtn} onPress={() => loginHandler()}>
+                {
+                  loading ?
+                    <ActivityIndicator size="small" color="#fff" />
+                    :
+                    <Text style={styles.loginBtnText}>Login</Text>
                 }
-            </Touchable>
+              </Touchable>
 
-            <Text color='primary' size={16} weight='medium' style={styles.orText}>OR</Text>
+              <Text color='primary' size={16} weight='medium' style={styles.orText}>OR</Text>
 
-            <Touchable style={styles.registerBtn} onPress={() => navigation.navigate('signup')}>
-              <Text style={styles.registerBtnText}>Register</Text>
-            </Touchable>
-          </View>
-        </ScrollView>
+              <Touchable style={styles.registerBtn} onPress={() => {
+                navigation.navigate('signup')
+                setErr(false)
+              }}>
+                <Text style={styles.registerBtnText}>Register</Text>
+              </Touchable>
+            </View>
+          </ScrollView>
+        </Screen>
       </ImageBackground>
     </View>
   )

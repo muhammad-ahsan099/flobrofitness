@@ -1,1 +1,3 @@
-export const endPoint = 'http://fcoll242-001-site2.etempurl.com/api/Account/';
+import config from "./config";
+
+export const endPoint = config.API_URL

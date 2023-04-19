@@ -10,13 +10,34 @@ import AppBar from '../../components/appBar/AppBar'
 import Accordion from '../../components/accordion/Accordion'
 import { LOGOIMG } from '../../constant/Icons'
 import CompanyProfile from '../../components/appBar/CompanyProfile'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateUserStatus } from '../../redux/actions/AuthActions'
 
 export default function Subscription({ navigation }) {
+    const userData = useSelector(state => state.AuthReducer.userData)
+    const dispatch = useDispatch()
+    const navigateHandler = (courseTitle, price, memberShipId)=> {
+        if(memberShipId === 1 && price === 0){
+            navigation.replace('BottomTabs');
+            navigation.reset({ index: 0, routes: [{ name: 'BottomTabs' }] });
+        } else {
+            navigation.navigate("SubscriptionDetail", {
+                courseTitle, 
+                price, 
+                memberShipId
+            })
+        }
+        dispatch(updateUserStatus(userData.UserID ? userData.UserID : userData.ID))
+
+    }
     return (
         <View style={styles.container}>
             <Screen
                 scroll
                 safeArea
+                statusbar
+                statusbarContent="dark-content"
+                statusbarColor={theme.colors.white}
                 contentContainerStyle={styles.screen}
             >
                 <CompanyProfile cardId={3} />
@@ -79,7 +100,7 @@ export default function Subscription({ navigation }) {
                                     <Text style={styles.innerDetail}>{item.detail.six}</Text>
                                 </View>
                                 <View style={styles.continueBtn}>
-                                    <Touchable style={styles.saveBtn} onPress={()=> navigation.navigate('SubscriptionDetail')}>
+                                    <Touchable style={styles.saveBtn} onPress={()=> navigateHandler(item.title, item.payment, item.memberShipId)}>
                                         <Text size={16} weight={'medium'} color="white">{item.payment === 0 ? 'Continue' : `Subscribe ${item.payment}$`}</Text>
                                     </Touchable>
                                 </View>

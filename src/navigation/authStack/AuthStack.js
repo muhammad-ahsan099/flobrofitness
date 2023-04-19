@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LogIn from '../../screens/login/LogIn';
 import Signup from '../../screens/signup/Signup';
+import VeifyEmail from '../../screens/verifyEmail/VerifyEmail';
 const AppStack = createNativeStackNavigator();
 
 // StackContainer
@@ -22,6 +23,11 @@ function AuthStack() {
             <AppStack.Screen
                 name="signup"
                 component={Signup}
+                options={options}
+            />
+            <AppStack.Screen
+                name="VeifyEmail"
+                component={VeifyEmail}
                 options={options}
             />
         </AppStack.Navigator>

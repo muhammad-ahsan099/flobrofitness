@@ -28,10 +28,10 @@ const Signup = ({ navigation }) => {
         barStyle={'light-content'}
       />
       <ImageBackground source={SIGNUP_BG} resizeMode="cover" style={styles.image}>
-        <View
-          style={styles.container}
+        <Screen
+          keyboardVerticalOffset={0}
         >
-          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps='handled'>
             <View style={styles.loginBox}>
               <Image source={LOGO} resizeMode='cover' style={styles.logo} />
 
@@ -39,7 +39,7 @@ const Signup = ({ navigation }) => {
                 success &&
                 <View style={styles.emailSendView}>
                   <Text color='success' size={12} weight={'regular'} >A verification link has been sent to the registered email.</Text>
-                  <Touchable onPress={()=> setSuccess(false)}>
+                  <Touchable onPress={() => setSuccess(false)}>
                     <Icon name="close" size={16} color="#495057" />
                   </Touchable>
                 </View>
@@ -63,7 +63,7 @@ const Signup = ({ navigation }) => {
                   }
                   value={values.firstName}
                   onChangeText={handleChange('firstName')}
-                  // onBlur={() => generateUserId()}
+                // onBlur={() => generateUserId()}
                 />
                 {values.inputErr !== "" && (values.inputId === 1) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
                 <TextInput
@@ -82,7 +82,10 @@ const Signup = ({ navigation }) => {
                   }
                   value={values.lastName}
                   onChangeText={handleChange('lastName')}
-                  onBlur={() => generateUserId()}
+                  onBlur={() => {
+                    if (values.firstName && values.lastName)
+                      generateUserId()
+                  }}
                 />
                 {values.inputErr !== "" && (values.inputId === 2) && <Text size={12} color={'error'} weight={'normal'}> {values.inputErr}</Text>}
                 <TextInput
@@ -160,7 +163,7 @@ const Signup = ({ navigation }) => {
               </Touchable>
             </View>
           </ScrollView>
-        </View>
+        </Screen>
       </ImageBackground>
     </View>
   )

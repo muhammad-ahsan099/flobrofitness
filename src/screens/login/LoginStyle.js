@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     screen: {
         flexGrow: 1,
         justifyContent: 'center',
+        zIndex: 1000
     },
     container: {
         flex: 1

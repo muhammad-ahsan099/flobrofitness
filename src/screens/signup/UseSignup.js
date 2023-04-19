@@ -1,8 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { doSignup } from "../../redux/actions/AuthActions";
 
 export const UseSignup = () => {
+  const navigation = useNavigation()
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -26,19 +29,16 @@ export const UseSignup = () => {
   };
 
   let check = true
-  console.log('Check: ', check);
   const generateUserId = () => {
     let num = null
     if (!num) {
-      console.log("inside chec:", num);
-      num = Math.floor(Math.random() * 1000);
+      num = Math.floor(Math.random()*(999-100+1)+100);
     }
     let first = values.firstName[0]
-    let last = values.lastName[0] + values.lastName[1] + values.lastName[2]
+    let last = values.lastName[0]
     let id = first.toLowerCase() + last.toLowerCase() + num
     setValues({ ...values, userId: id })
   }
-
 
   const signupHandler = () => {
     if (values.firstName === "" || values.firstName === undefined) {
@@ -60,7 +60,7 @@ export const UseSignup = () => {
         Email: values.email,
         Passworrd: values.password
       }
-      dispatch(doSignup(data, setLoading, setSuccess))
+      dispatch(doSignup(data, setLoading, setSuccess, navigation))
     }
   }
   return [{

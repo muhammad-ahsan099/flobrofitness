@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, TouchableOpacity, ActivityIndicator, PanResponder } from 'react-native'
 import Slider from "react-native-slider";
 import { Text } from '../../components/text/Text';
 import React, { useState } from 'react'
@@ -29,10 +29,8 @@ const UserDetail = () => {
 
     const feet = Math.floor(inputs.height / 12);
     const inches = inputs.height % 12;
-
     const [show, setShow] = useState(false)
 
-    console.log("Selected Country: ", selectedCountry);
     const BodyTypeButton = ({ bodyType, radioPress }) => {
         return (
             <TouchableOpacity onPress={radioPress}>
@@ -114,6 +112,7 @@ const UserDetail = () => {
                                     trackStyle={{ height: 3 }}
                                     value={inputs.age}
                                     onValueChange={onChangeHandler('age')}
+                                    trackPressable={true}
                                 />
                             </View>
                         </View>
@@ -138,6 +137,7 @@ const UserDetail = () => {
                                     trackStyle={{ height: 3 }}
                                     value={inputs.height}
                                     onValueChange={onChangeHandler('height')}
+                                    trackPressable={true}
                                 />
                             </View>
                         </View>
@@ -162,7 +162,7 @@ const UserDetail = () => {
                                     trackStyle={{ height: 3 }}
                                     value={inputs.weight}
                                     onValueChange={onChangeHandler('weight')}
-
+                                    trackPressable={true}
                                 />
                             </View>
                         </View>
@@ -214,7 +214,6 @@ const UserDetail = () => {
                             withFlag={true}
                             withCallingCode={true}
                             onSelect={(country) => {
-                                console.log("Country Data: ", country);
                                 setSelectedCountry({name: country?.name, flag: country?.flag, code: country?.callingCode[0]})
                             }
                         }

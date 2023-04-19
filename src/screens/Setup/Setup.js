@@ -16,7 +16,6 @@ const Setup = ({ navigation }) => {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const userData = useSelector(state => state.AuthReducer.userData)
-  console.log('userData: ', userData);
   const pressHandler = () => {
     if (check && userData) {
       dispatch(updateUserStatus(userData.UserID ? userData.UserID : userData.ID, navigation, 'UserDetail', setLoading))
@@ -71,7 +70,7 @@ const Setup = ({ navigation }) => {
           <Text style={Styles.termsDes}>
             {SETUP_CUSTOM_DATA?.mainContent?.mainDescription}
           </Text>
-          <View style={Styles.termsView}>
+          <Touchable style={Styles.termsView} onPress={()=> setCheck(!check)}>
             <CustomCheckbox check={check} setCheck={setCheck} />
             <View style={Styles.section}>
               <Text style={Styles.termsDesp}>
@@ -81,7 +80,7 @@ const Setup = ({ navigation }) => {
                 <Text size={15} color={'secondary'} weight={'regular'}>Terms of Services, </Text>
               </Touchable>
 
-              <Touchable onPress={() => LinkingSocialContacts(github)}>
+              <Touchable onPress={() => LinkingSocialContacts('https://www.flobrofitness.com/Policy/Disclaimer')}>
                 <Text size={15} color={'secondary'} weight={'regular'}>Disclaimer, </Text>
               </Touchable>
 
@@ -94,7 +93,7 @@ const Setup = ({ navigation }) => {
               </Touchable>
             </View>
 
-          </View>
+          </Touchable>
 
           <View style={Styles.continueBtn}>
             <View style={Styles.continueBtn}>

@@ -158,6 +158,7 @@ export const Styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: theme.colors.borderColor,
+        textAlignVertical: 'top'
     },
     continueBtn: {
         width: '100%',

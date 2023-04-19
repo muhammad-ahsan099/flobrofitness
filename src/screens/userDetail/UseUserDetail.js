@@ -60,7 +60,6 @@ const UseUserDetail = () => {
         setBodyType(array);
     };
     const onChangeHandler = (prop) => (text) => {
-        console.log("Prop: ", prop, "text: ", text);
         setInputs({ ...inputs, [prop]: text });
     };
 
@@ -72,7 +71,6 @@ const UseUserDetail = () => {
     const addUserDetailHandler = () => {
 
         const body = bodyType.find((item) => item.status === true)
-        console.log("title bodyType: ", body);
 
         const data = {
             ID: 0,
@@ -89,10 +87,9 @@ const UseUserDetail = () => {
             BodyWait: inputs.weight,
         }
 
-        console.log("final Data: ", data);
         dispatch(updateUserDetail(data, setLoading))
-        // dispatch(updateUserStatus(userData?.UserID, navigation, 'Subscription', setLoading))
-        // navigation.navigate('Subscription')
+
+        dispatch(updateUserStatus(userData?.UserID, navigation, 'Subscription', setLoading))
     }
     return {
         inputs,
